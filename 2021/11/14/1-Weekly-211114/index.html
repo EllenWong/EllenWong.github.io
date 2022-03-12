@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/computer.png">
+  <link rel="icon" href="/img/cutecat.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本周学习汇报">
+  <meta name="author" content="EllenWong">
+  <meta name="keywords" content="">
+  
+  <title>Weekly-211114 - WYM&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ellenwong.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EllenWong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/1-weeklynote/wn.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Weekly-211114">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-14 22:15" pubdate>
+        November 14, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      777 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Weekly-211114</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：November 14, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="本周学习汇报"><a href="#本周学习汇报" class="headerlink" title="本周学习汇报"></a>本周学习汇报</h3><span id="more"></span>
+<blockquote>
+<div>
+            <input type="checkbox" disabled checked="checked">DatasetGAN: Efficient Labeled Data Factory with Minimal Human Effort(CVPR2021oral)<sup id=fnref:1 class=footnote-ref><a href=#fn:1 rel=footnote><span class=hint--top hint--rounded aria-label=https://nv-tlabs.github.io/datasetGAN/
+>[1]</span></a></sup>
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">EditGAN: High-Precision Semantic Image Editing(NeurlPS2021)<sup id=fnref:2 class=footnote-ref><a href=#fn:2 rel=footnote><span class=hint--top hint--rounded aria-label=https://nv-tlabs.github.io/editGAN/
+>[2]</span></a></sup>
+          </div> 
+<div>
+            <input type="checkbox" disabled checked="checked">分支限界法与堆排序的大作业
+          </div>
+</blockquote>
+<h2 id="1-DatasetGAN-标注图像的生成"><a href="#1-DatasetGAN-标注图像的生成" class="headerlink" title="1. DatasetGAN:标注图像的生成"></a>1. DatasetGAN:标注图像的生成</h2><h3 id="1-1-Motivation"><a href="#1-1-Motivation" class="headerlink" title="1.1 Motivation"></a>1.1 Motivation</h3><ul>
+<li>现如今深度学习网络模型需要大量的数据标注；</li>
+<li>对语义分割任务而言，数据标注耗时严重；</li>
+<li><strong>目的：通过少数标记的样本生成大量高质量的标注数据集。</strong></li>
+</ul>
+<h3 id="1-2-Related-Work"><a href="#1-2-Related-Work" class="headerlink" title="1.2 Related Work"></a>1.2 Related Work</h3><ul>
+<li><strong>标注数据生成模型：</strong>使用大量标注数据对模型进行训练，如StyleGAN。而本文则利用少量人工标注样本去生成高质量语义标签。</li>
+<li><strong>半监督学习：</strong>可用于对数据集的扩充。常用的adversarial loss只学习生成图像的语义而没有探索图像本身的语义。依赖卷积和残差结构的decoder，将中间层的特征映射到一个segmentation map，而本文则直接对解缠的特征向量(styleGAN)进行直接解释，逐像素进行操作。</li>
+<li><strong>对比学习：</strong>使用对抗损失，测量样本对之间的相似度，学习图像的特征表示空间。本文用GAN特征图的语义信息，代替对比损失。</li>
+</ul>
+<h3 id="1-3-Method"><a href="#1-3-Method" class="headerlink" title="1.3 Method"></a>1.3 Method</h3><p><img src="/images/1-weeklynote/211114/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图1-1 DatasetGAN整体流程 </font></center>
+
+<p><img src="/images/1-weeklynote/211114/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图1-2 DatasetGAN网络结构 </font></center>
+
+<ul>
+<li><strong>方法重点：</strong>获得高维latent space的语义信息；</li>
+<li><strong>应用：</strong>语义分割、关键点预测；</li>
+</ul>
+<h3 id="1-4-Result"><a href="#1-4-Result" class="headerlink" title="1.4 Result"></a>1.4 Result</h3><p><img src="/images/1-weeklynote/211114/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图1-3 DatasetGAN实验结果 </font></center>
+
+<h2 id="2-EditGAN-高精度语义图像编辑"><a href="#2-EditGAN-高精度语义图像编辑" class="headerlink" title="2. EditGAN:高精度语义图像编辑"></a>2. EditGAN:高精度语义图像编辑</h2><h3 id="2-1-Motivation"><a href="#2-1-Motivation" class="headerlink" title="2.1 Motivation"></a>2.1 Motivation</h3><ul>
+<li><strong>其他研究：</strong>大多数基于GAN的图像编辑方法通常需要用于训练的语义分割标注的大规模数据集，并且仅提供高级控制，或仅在不同图像之间进行插值。</li>
+<li><strong>本文目的：</strong>提供高质量、高精度的语义图像编辑，允许用户修改一些细节来对图像进行编辑。</li>
+</ul>
+<h3 id="2-2-Related-Work"><a href="#2-2-Related-Work" class="headerlink" title="2.2 Related Work"></a>2.2 Related Work</h3><ul>
+<li><strong>图像编辑：</strong>基于GAN的图像编辑方法*6，详见论文页3。</li>
+<li><strong>GAN与潜空间图像映射：</strong>DatasetGAN与SemanticGAN的半监督学习。</li>
+</ul>
+<h3 id="2-3-Method"><a href="#2-3-Method" class="headerlink" title="2.3 Method"></a>2.3 Method</h3><p><img src="/images/1-weeklynote/211114/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图2-1 EditGAN整体流程 </font></center>
+
+<p><img src="/images/1-weeklynote/211114/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图2-2 EditGAN的latent space编辑 </font></center>
+
+<ul>
+<li><strong>Background：</strong>StyleGAN2；</li>
+<li><strong>方法重点：</strong>侧重于encoder与优化器的设计，使图像在GAN的潜空间内更好地得到编辑；</li>
+</ul>
+<h3 id="2-4-Result"><a href="#2-4-Result" class="headerlink" title="2.4 Result"></a>2.4 Result</h3><p><img src="/images/1-weeklynote/211114/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图2-3 DatasetGAN实验结果 </font></center>
+
+<h2 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h2><ul>
+<li><strong>工程数学：</strong>矩阵的满秩分解、正交三角分解、奇异值分解、极分解、谱分解；</li>
+<li><strong>网络安全：</strong>Hash函数的应用，消息认证与数字签名；</li>
+<li><strong>高级算法分析：</strong>近似算法与多项式近似方案，0/1背包问题的大作业；</li>
+<li><strong>高级机器学习：</strong>特征选择与稀疏学习；</li>
+<li><strong>高级人机交互技术：</strong> Increasing Electrical Muscle Stimulation’s Dexterity by means of Back of the Hand Actuation；</li>
+<li><strong>科技论文写作(蹭课)：</strong>IMRAD、论文类型、写作技巧、写作工具等；</li>
+</ul>
+<h2 id="4-下周计划"><a href="#4-下周计划" class="headerlink" title="4. 下周计划"></a>4. 下周计划</h2><ol>
+<li>阅读NeurlPS的几篇论文。</li>
+<li>准备人机交互与网络安全的论文的课堂展示。</li>
+<li>继续阅读相关论文及代码。</li>
+</ol>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://nv-tlabs.github.io/datasetGAN/">https://nv-tlabs.github.io/datasetGAN/</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://nv-tlabs.github.io/editGAN/">https://nv-tlabs.github.io/editGAN/</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Weekly-Note/">Weekly Note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/GAN/">GAN</a>
+                    
+                      <a class="hover-with-bg" href="/tags/semantic-task/">semantic task</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/21/1-Weekly-211121/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Weekly-211121</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/08/0-hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%9B%BE%E8%A1%A8%E5%8F%8Appt%E5%B5%8C%E5%85%A5/">
+                        <span class="hidden-mobile">hexo博客的图表及ppt嵌入</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"66d9351bc44d3e35c662","clientSecret":"91eaf9f3eff9eb4d326e8093a434b488d8e160b6","repo":"EllenWong.github.io","owner":"EllenWong","admin":["EllenWong"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'c6fe88dbb0a1cb4b5af1b4fe55d123ae'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

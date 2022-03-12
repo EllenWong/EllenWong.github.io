@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/computer.png">
+  <link rel="icon" href="/img/cutecat.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本周学习汇报">
+  <meta name="author" content="EllenWong">
+  <meta name="keywords" content="">
+  
+  <title>Weekly-211024 - WYM&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ellenwong.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EllenWong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/1-weeklynote/wn.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Weekly-211024">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-22 20:44" pubdate>
+        October 22, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Weekly-211024</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：October 24, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="本周学习汇报"><a href="#本周学习汇报" class="headerlink" title="本周学习汇报"></a>本周学习汇报</h3><span id="more"></span>
+<blockquote>
+<div>
+            <input type="checkbox" disabled checked="checked">《Alias-Free Generative Adversarial Networks》<sup id=fnref:1 class=footnote-ref><a href=#fn:1 rel=footnote><span class=hint--top hint--rounded aria-label=https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf
+>[1]</span></a></sup>
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">Code of StyleGAN3<sup id=fnref:2 class=footnote-ref><a href=#fn:2 rel=footnote><span class=hint--top hint--rounded aria-label=https://github.com/NVlabs/stylegan3
+>[2]</span></a></sup>
+          </div>
+</blockquote>
+<h2 id="1-StyleGAN3（NeurIPS-2021）"><a href="#1-StyleGAN3（NeurIPS-2021）" class="headerlink" title="1. StyleGAN3（NeurIPS 2021）"></a>1. StyleGAN3（NeurIPS 2021）</h2><p><img src="/images/1-weeklynote/211024/alias_free_poster.gif" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-Motivation"><a href="#1-1-Motivation" class="headerlink" title="1.1 Motivation"></a>1.1 Motivation</h3><p>&emsp;&emsp;如上图所示，StyleGAN2在图像生成中，图像细节特征的平移与旋转效果很差，即纹理特征会很大程度地依赖于坐标。StyleGAN3的提出，为解决StyleGAN2图像坐标与特征粘连的问题，主要修改生成器的设计，得到一个更自然的转换层次结构，使纹理与坐标一起移动。视觉效果上，可以使生成物体在空间中更连贯地移动，使GAN更适合视频与动画的生成。</p>
+<ul>
+<li><strong>Alias：</strong>描述样本重建过程中，与原始样本不同的失真或伪影（如摩尔纹）。</li>
+</ul>
+<h3 id="1-2-Method"><a href="#1-2-Method" class="headerlink" title="1.2 Method"></a>1.2 Method</h3><h4 id="1-2-1-BaseLine——StyleGAN2"><a href="#1-2-1-BaseLine——StyleGAN2" class="headerlink" title="1.2.1 BaseLine——StyleGAN2"></a>1.2.1 BaseLine——StyleGAN2</h4><p><img src="/images/1-weeklynote/211024/1-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图1-1 StyleGAN2网络架构 </font></center>
+
+<h4 id="1-2-2-Fourier-features"><a href="#1-2-2-Fourier-features" class="headerlink" title="1.2.2 Fourier features"></a>1.2.2 Fourier features</h4><p>&emsp;&emsp;为了从输入的潜代码中更好地提取平移与旋转的连续特征，将生成器的学习常数输入替换为与原始 4x4 分辨率匹配的固定傅立叶特征（圆形频带内的均匀采样频率 = 2），这一改变略微提高了FID的指标，更重要的贡献在于不必估算操作t，而可以直接计算图像不变性的指标。</p>
+<h4 id="1-2-3-No-noise-inputs"><a href="#1-2-3-No-noise-inputs" class="headerlink" title="1.2.3 No noise inputs"></a>1.2.3 No noise inputs</h4><p>&emsp;&emsp;由于逐像素噪声输入独立于底层特征的任意变换，因此去除这些输入，并从下层粗糙特征中继承亚像素的位置信息。</p>
+<h4 id="1-2-4-Simplified-generator"><a href="#1-2-4-Simplified-generator" class="headerlink" title="1.2.4 Simplified generator"></a>1.2.4 Simplified generator</h4><p>&emsp;&emsp;映射网络深度减少，禁用混合正则化和路径长度正则化。在每次卷积之前，与输出的跳过连接被特征图的归一化所取代。所有这些变化都使 FID 保持不变，并略微提高了不变性的测量指标。</p>
+<h4 id="1-2-5-Boundaries-amp-upsampling"><a href="#1-2-5-Boundaries-amp-upsampling" class="headerlink" title="1.2.5 Boundaries &amp; upsampling"></a>1.2.5 Boundaries &amp; upsampling</h4><p>&emsp;&emsp;图像边界填充过程中，会导致图像绝对坐标泄漏到内部表示中（不利于平移旋转的不变性），因此留出10像素的间隔。在理论模型的引导下，采用临界采样的方式，用Kaiser窗口n=6（每个输入像素影响6个输出像素，每个输出像素受6个输入像素影响）的sinc滤波器替换原有的双线性上采样滤波器。</p>
+<h4 id="1-2-6-Filtered-nonlinearities"><a href="#1-2-6-Filtered-nonlinearities" class="headerlink" title="1.2.6 Filtered nonlinearities"></a>1.2.6 Filtered nonlinearities</h4><p>&emsp;&emsp;在连续域中应用ReLU激活函数，会导致非常高的频率无法在特征中表达，因此将“上采样-&gt;LReLU-&gt;下采样”的方式应用在网络结构中，以近似解决此问题。</p>
+<h4 id="1-2-7-Non-critical-sampling"><a href="#1-2-7-Non-critical-sampling" class="headerlink" title="1.2.7 Non-critical sampling"></a>1.2.7 Non-critical sampling</h4><p>&emsp;&emsp;除高分辨率层外，其他层使用较低的截止频率，截止频率与feature map的数量成反比，以补偿信号中减少的空间信息。</p>
+<h4 id="1-2-8-Transformed-Fourier-features"><a href="#1-2-8-Transformed-Fourier-features" class="headerlink" title="1.2.8 Transformed Fourier features"></a>1.2.8 Transformed Fourier features</h4><p>&emsp;&emsp;在傅立叶特征之前添加了额外的仿射变换，允许生成器基于样式向量具有明确的旋转和平移参数。</p>
+<h4 id="1-2-9-Flexible-layers-StyleGAN3-T"><a href="#1-2-9-Flexible-layers-StyleGAN3-T" class="headerlink" title="1.2.9 Flexible layers (StyleGAN3-T)"></a>1.2.9 Flexible layers (StyleGAN3-T)</h4><p>&emsp;&emsp;在14层的生成器中，采用不同的截止频率，以最大程度地抑制Alias。</p>
+<h4 id="1-2-10-Rotation-equiv-StyleGAN3-R"><a href="#1-2-10-Rotation-equiv-StyleGAN3-R" class="headerlink" title="1.2.10 Rotation equiv. (StyleGAN3-R)"></a>1.2.10 Rotation equiv. (StyleGAN3-R)</h4><p>&emsp;&emsp;为实现旋转不变性，文章采用了两种措施，其一是用1x1卷积代替3x3卷积，此时只有上下采样分散像素间的信息；其二是采用一个径向对称jinc滤波器代替基于sinc的下采样滤波器。</p>
+<p><img src="/images/1-weeklynote/211024/1-3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图1-2 StyleGAN3 网络结构 </font></center>
+
+<h3 id="1-3-Result"><a href="#1-3-Result" class="headerlink" title="1.3 Result"></a>1.3 Result</h3><p><img src="/images/1-weeklynote/211024/1-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图1-3 实验结果 </font></center>
+
+<h2 id="2-StyleGAN3实现"><a href="#2-StyleGAN3实现" class="headerlink" title="2. StyleGAN3实现"></a>2. StyleGAN3实现</h2><ul>
+<li><strong>生成器结构</strong><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://github.com/NVlabs/stylegan3
+">[2]</span></a></sup><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Generator</span>(<span class="hljs-params">torch.nn.Module</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self,</span></span><br><span class="hljs-params"><span class="hljs-function">        z_dim,                      <span class="hljs-comment"># Input latent (Z) dimensionality.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        c_dim,                      <span class="hljs-comment"># Conditioning label (C) dimensionality.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        w_dim,                      <span class="hljs-comment"># Intermediate latent (W) dimensionality.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        img_resolution,             <span class="hljs-comment"># Output resolution.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        img_channels,               <span class="hljs-comment"># Number of output color channels.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        mapping_kwargs      = &#123;&#125;,   <span class="hljs-comment"># Arguments for MappingNetwork.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        **synthesis_kwargs,         <span class="hljs-comment"># Arguments for SynthesisNetwork.</span></span></span><br><span class="hljs-params"><span class="hljs-function">    </span>):</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.z_dim = z_dim<br>        self.c_dim = c_dim<br>        self.w_dim = w_dim<br>        self.img_resolution = img_resolution<br>        self.img_channels = img_channels<br>        self.synthesis = SynthesisNetwork(w_dim=w_dim, img_resolution=img_resolution, img_channels=img_channels, **synthesis_kwargs)<br>        self.num_ws = self.synthesis.num_ws<br>        self.mapping = MappingNetwork(z_dim=z_dim, c_dim=c_dim, w_dim=w_dim, num_ws=self.num_ws, **mapping_kwargs)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span>(<span class="hljs-params">self, z, c, truncation_psi=<span class="hljs-number">1</span>, truncation_cutoff=<span class="hljs-literal">None</span>, update_emas=<span class="hljs-literal">False</span>, **synthesis_kwargs</span>):</span><br>        ws = self.mapping(z, c, truncation_psi=truncation_psi, truncation_cutoff=truncation_cutoff, update_emas=update_emas)<br>        img = self.synthesis(ws, update_emas=update_emas, **synthesis_kwargs)<br>        <span class="hljs-keyword">return</span> img<br></code></pre></div></td></tr></table></figure></li>
+<li><strong>映射网络</strong><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://github.com/NVlabs/stylegan3
+">[2]</span></a></sup><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MappingNetwork</span>(<span class="hljs-params">torch.nn.Module</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self,</span></span><br><span class="hljs-params"><span class="hljs-function">        z_dim,                      <span class="hljs-comment"># Input latent (Z) dimensionality.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        c_dim,                      <span class="hljs-comment"># Conditioning label (C) dimensionality, 0 = no labels.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        w_dim,                      <span class="hljs-comment"># Intermediate latent (W) dimensionality.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        num_ws,                     <span class="hljs-comment"># Number of intermediate latents to output.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        num_layers      = <span class="hljs-number">2</span>,        <span class="hljs-comment"># Number of mapping layers.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        lr_multiplier   = <span class="hljs-number">0.01</span>,     <span class="hljs-comment"># Learning rate multiplier for the mapping layers.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        w_avg_beta      = <span class="hljs-number">0.998</span>,    <span class="hljs-comment"># Decay for tracking the moving average of W during training.</span></span></span><br><span class="hljs-params"><span class="hljs-function">    </span>):</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.z_dim = z_dim<br>        self.c_dim = c_dim<br>        self.w_dim = w_dim<br>        self.num_ws = num_ws<br>        self.num_layers = num_layers<br>        self.w_avg_beta = w_avg_beta<br><br>        <span class="hljs-comment"># Construct layers.</span><br>        self.embed = FullyConnectedLayer(self.c_dim, self.w_dim) <span class="hljs-keyword">if</span> self.c_dim &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>        features = [self.z_dim + (self.w_dim <span class="hljs-keyword">if</span> self.c_dim &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)] + [self.w_dim] * self.num_layers<br>        <span class="hljs-keyword">for</span> idx, in_features, out_features <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(<span class="hljs-built_in">range</span>(num_layers), features[:-<span class="hljs-number">1</span>], features[<span class="hljs-number">1</span>:]):<br>            layer = FullyConnectedLayer(in_features, out_features, activation=<span class="hljs-string">&#x27;lrelu&#x27;</span>, lr_multiplier=lr_multiplier)<br>            <span class="hljs-built_in">setattr</span>(self, <span class="hljs-string">f&#x27;fc<span class="hljs-subst">&#123;idx&#125;</span>&#x27;</span>, layer)<br>        self.register_buffer(<span class="hljs-string">&#x27;w_avg&#x27;</span>, torch.zeros([w_dim]))<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span>(<span class="hljs-params">self, z, c, truncation_psi=<span class="hljs-number">1</span>, truncation_cutoff=<span class="hljs-literal">None</span>, update_emas=<span class="hljs-literal">False</span></span>):</span><br>        misc.assert_shape(z, [<span class="hljs-literal">None</span>, self.z_dim])<br>        <span class="hljs-keyword">if</span> truncation_cutoff <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            truncation_cutoff = self.num_ws<br><br>        <span class="hljs-comment"># Embed, normalize, and concatenate inputs.</span><br>        x = z.to(torch.float32)<br>        x = x * (x.square().mean(<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>) + <span class="hljs-number">1e-8</span>).rsqrt()<br>        <span class="hljs-keyword">if</span> self.c_dim &gt; <span class="hljs-number">0</span>:<br>            misc.assert_shape(c, [<span class="hljs-literal">None</span>, self.c_dim])<br>            y = self.embed(c.to(torch.float32))<br>            y = y * (y.square().mean(<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>) + <span class="hljs-number">1e-8</span>).rsqrt()<br>            x = torch.cat([x, y], dim=<span class="hljs-number">1</span>) <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">else</span> y<br><br>        <span class="hljs-comment"># Execute layers.</span><br>        <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(self.num_layers):<br>            x = <span class="hljs-built_in">getattr</span>(self, <span class="hljs-string">f&#x27;fc<span class="hljs-subst">&#123;idx&#125;</span>&#x27;</span>)(x)<br><br>        <span class="hljs-comment"># Update moving average of W.</span><br>        <span class="hljs-keyword">if</span> update_emas:<br>            self.w_avg.copy_(x.detach().mean(dim=<span class="hljs-number">0</span>).lerp(self.w_avg, self.w_avg_beta))<br><br>        <span class="hljs-comment"># Broadcast and apply truncation.</span><br>        x = x.unsqueeze(<span class="hljs-number">1</span>).repeat([<span class="hljs-number">1</span>, self.num_ws, <span class="hljs-number">1</span>])<br>        <span class="hljs-keyword">if</span> truncation_psi != <span class="hljs-number">1</span>:<br>            x[:, :truncation_cutoff] = self.w_avg.lerp(x[:, :truncation_cutoff], truncation_psi)<br>        <span class="hljs-keyword">return</span> x<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">extra_repr</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">f&#x27;z_dim=<span class="hljs-subst">&#123;self.z_dim:d&#125;</span>, c_dim=<span class="hljs-subst">&#123;self.c_dim:d&#125;</span>, w_dim=<span class="hljs-subst">&#123;self.w_dim:d&#125;</span>, num_ws=<span class="hljs-subst">&#123;self.num_ws:d&#125;</span>&#x27;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><strong>分析网络</strong><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://github.com/NVlabs/stylegan3
+">[2]</span></a></sup><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SynthesisNetwork</span>(<span class="hljs-params">torch.nn.Module</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self,</span></span><br><span class="hljs-params"><span class="hljs-function">        w_dim,                          <span class="hljs-comment"># Intermediate latent (W) dimensionality.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        img_resolution,                 <span class="hljs-comment"># Output image resolution.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        img_channels,                   <span class="hljs-comment"># Number of color channels.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        channel_base        = <span class="hljs-number">32768</span>,    <span class="hljs-comment"># Overall multiplier for the number of channels.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        channel_max         = <span class="hljs-number">512</span>,      <span class="hljs-comment"># Maximum number of channels in any layer.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        num_layers          = <span class="hljs-number">14</span>,       <span class="hljs-comment"># Total number of layers, excluding Fourier features and ToRGB.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        num_critical        = <span class="hljs-number">2</span>,        <span class="hljs-comment"># Number of critically sampled layers at the end.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        first_cutoff        = <span class="hljs-number">2</span>,        <span class="hljs-comment"># Cutoff frequency of the first layer (f_&#123;c,0&#125;).</span></span></span><br><span class="hljs-params"><span class="hljs-function">        first_stopband      = <span class="hljs-number">2</span>**<span class="hljs-number">2.1</span>,   <span class="hljs-comment"># Minimum stopband of the first layer (f_&#123;t,0&#125;).</span></span></span><br><span class="hljs-params"><span class="hljs-function">        last_stopband_rel   = <span class="hljs-number">2</span>**<span class="hljs-number">0.3</span>,   <span class="hljs-comment"># Minimum stopband of the last layer, expressed relative to the cutoff.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        margin_size         = <span class="hljs-number">10</span>,       <span class="hljs-comment"># Number of additional pixels outside the image.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        output_scale        = <span class="hljs-number">0.25</span>,     <span class="hljs-comment"># Scale factor for the output image.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        num_fp16_res        = <span class="hljs-number">4</span>,        <span class="hljs-comment"># Use FP16 for the N highest resolutions.</span></span></span><br><span class="hljs-params"><span class="hljs-function">        **layer_kwargs,                 <span class="hljs-comment"># Arguments for SynthesisLayer.</span></span></span><br><span class="hljs-params"><span class="hljs-function">    </span>):</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.w_dim = w_dim<br>        self.num_ws = num_layers + <span class="hljs-number">2</span><br>        self.img_resolution = img_resolution<br>        self.img_channels = img_channels<br>        self.num_layers = num_layers<br>        self.num_critical = num_critical<br>        self.margin_size = margin_size<br>        self.output_scale = output_scale<br>        self.num_fp16_res = num_fp16_res<br><br>        <span class="hljs-comment"># Geometric progression of layer cutoffs and min. stopbands.</span><br>        last_cutoff = self.img_resolution / <span class="hljs-number">2</span> <span class="hljs-comment"># f_&#123;c,N&#125;</span><br>        last_stopband = last_cutoff * last_stopband_rel <span class="hljs-comment"># f_&#123;t,N&#125;</span><br>        exponents = np.minimum(np.arange(self.num_layers + <span class="hljs-number">1</span>) / (self.num_layers - self.num_critical), <span class="hljs-number">1</span>)<br>        cutoffs = first_cutoff * (last_cutoff / first_cutoff) ** exponents <span class="hljs-comment"># f_c[i]</span><br>        stopbands = first_stopband * (last_stopband / first_stopband) ** exponents <span class="hljs-comment"># f_t[i]</span><br><br>        <span class="hljs-comment"># Compute remaining layer parameters.</span><br>        sampling_rates = np.exp2(np.ceil(np.log2(np.minimum(stopbands * <span class="hljs-number">2</span>, self.img_resolution)))) <span class="hljs-comment"># s[i]</span><br>        half_widths = np.maximum(stopbands, sampling_rates / <span class="hljs-number">2</span>) - cutoffs <span class="hljs-comment"># f_h[i]</span><br>        sizes = sampling_rates + self.margin_size * <span class="hljs-number">2</span><br>        sizes[-<span class="hljs-number">2</span>:] = self.img_resolution<br>        channels = np.rint(np.minimum((channel_base / <span class="hljs-number">2</span>) / cutoffs, channel_max))<br>        channels[-<span class="hljs-number">1</span>] = self.img_channels<br><br>        <span class="hljs-comment"># Construct layers.</span><br>        self.<span class="hljs-built_in">input</span> = SynthesisInput(<br>            w_dim=self.w_dim, channels=<span class="hljs-built_in">int</span>(channels[<span class="hljs-number">0</span>]), size=<span class="hljs-built_in">int</span>(sizes[<span class="hljs-number">0</span>]),<br>            sampling_rate=sampling_rates[<span class="hljs-number">0</span>], bandwidth=cutoffs[<span class="hljs-number">0</span>])<br>        self.layer_names = []<br>        <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(self.num_layers + <span class="hljs-number">1</span>):<br>            prev = <span class="hljs-built_in">max</span>(idx - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)<br>            is_torgb = (idx == self.num_layers)<br>            is_critically_sampled = (idx &gt;= self.num_layers - self.num_critical)<br>            use_fp16 = (sampling_rates[idx] * (<span class="hljs-number">2</span> ** self.num_fp16_res) &gt; self.img_resolution)<br>            layer = SynthesisLayer(<br>                w_dim=self.w_dim, is_torgb=is_torgb, is_critically_sampled=is_critically_sampled, use_fp16=use_fp16,<br>                in_channels=<span class="hljs-built_in">int</span>(channels[prev]), out_channels= <span class="hljs-built_in">int</span>(channels[idx]),<br>                in_size=<span class="hljs-built_in">int</span>(sizes[prev]), out_size=<span class="hljs-built_in">int</span>(sizes[idx]),<br>                in_sampling_rate=<span class="hljs-built_in">int</span>(sampling_rates[prev]), out_sampling_rate=<span class="hljs-built_in">int</span>(sampling_rates[idx]),<br>                in_cutoff=cutoffs[prev], out_cutoff=cutoffs[idx],<br>                in_half_width=half_widths[prev], out_half_width=half_widths[idx],<br>                **layer_kwargs)<br>            name = <span class="hljs-string">f&#x27;L<span class="hljs-subst">&#123;idx&#125;</span>_<span class="hljs-subst">&#123;layer.out_size[<span class="hljs-number">0</span>]&#125;</span>_<span class="hljs-subst">&#123;layer.out_channels&#125;</span>&#x27;</span><br>            <span class="hljs-built_in">setattr</span>(self, name, layer)<br>            self.layer_names.append(name)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span>(<span class="hljs-params">self, ws, **layer_kwargs</span>):</span><br>        misc.assert_shape(ws, [<span class="hljs-literal">None</span>, self.num_ws, self.w_dim])<br>        ws = ws.to(torch.float32).unbind(dim=<span class="hljs-number">1</span>)<br><br>        <span class="hljs-comment"># Execute layers.</span><br>        x = self.<span class="hljs-built_in">input</span>(ws[<span class="hljs-number">0</span>])<br>        <span class="hljs-keyword">for</span> name, w <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(self.layer_names, ws[<span class="hljs-number">1</span>:]):<br>            x = <span class="hljs-built_in">getattr</span>(self, name)(x, w, **layer_kwargs)<br>        <span class="hljs-keyword">if</span> self.output_scale != <span class="hljs-number">1</span>:<br>            x = x * self.output_scale<br><br>        <span class="hljs-comment"># Ensure correct shape and dtype.</span><br>        misc.assert_shape(x, [<span class="hljs-literal">None</span>, self.img_channels, self.img_resolution, self.img_resolution])<br>        x = x.to(torch.float32)<br>        <span class="hljs-keyword">return</span> x<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">extra_repr</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;\n&#x27;</span>.join([<br>            <span class="hljs-string">f&#x27;w_dim=<span class="hljs-subst">&#123;self.w_dim:d&#125;</span>, num_ws=<span class="hljs-subst">&#123;self.num_ws:d&#125;</span>,&#x27;</span>,<br>            <span class="hljs-string">f&#x27;img_resolution=<span class="hljs-subst">&#123;self.img_resolution:d&#125;</span>, img_channels=<span class="hljs-subst">&#123;self.img_channels:d&#125;</span>,&#x27;</span>,<br>            <span class="hljs-string">f&#x27;num_layers=<span class="hljs-subst">&#123;self.num_layers:d&#125;</span>, num_critical=<span class="hljs-subst">&#123;self.num_critical:d&#125;</span>,&#x27;</span>,<br>            <span class="hljs-string">f&#x27;margin_size=<span class="hljs-subst">&#123;self.margin_size:d&#125;</span>, num_fp16_res=<span class="hljs-subst">&#123;self.num_fp16_res:d&#125;</span>&#x27;</span>])<br><br></code></pre></div></td></tr></table></figure></li>
+<li><strong>指标</strong>：FID、perceptual_path_length、Inception score等</li>
+</ul>
+<h2 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h2><ul>
+<li><strong>工程数学：</strong>Jordan标准型、欧氏空间、酉空间；</li>
+<li><strong>网络安全：</strong>Feistel密码；</li>
+<li><strong>高级算法分析：</strong>分支限界法；</li>
+<li><strong>高级机器学习：</strong>集成学习；</li>
+<li><strong>高级人机交互技术：</strong> Touch&amp;Fold: A Foldable Haptic Actuator for Rendering Touch in<br>Mixed Reality</li>
+</ul>
+<h2 id="4-下周计划"><a href="#4-下周计划" class="headerlink" title="4. 下周计划"></a>4. 下周计划</h2><ol>
+<li>阅读之前看过的一些论文的代码并整理其逻辑结构；</li>
+<li>继续学习相关论文。</li>
+</ol>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf">https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/NVlabs/stylegan3">https://github.com/NVlabs/stylegan3</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Weekly-Note/">Weekly Note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/GAN/">GAN</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/22/4-smallcutepig/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">smallcutepig</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/16/1-Weekly-211017/">
+                        <span class="hidden-mobile">Weekly-211017</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"66d9351bc44d3e35c662","clientSecret":"91eaf9f3eff9eb4d326e8093a434b488d8e160b6","repo":"EllenWong.github.io","owner":"EllenWong","admin":["EllenWong"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '55e1a102ba450565e40ee40a34851d3a'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

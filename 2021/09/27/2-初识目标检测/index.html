@@ -1,0 +1,616 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/computer.png">
+  <link rel="icon" href="/img/cutecat.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="
+
+关于目标检测的一些理解与认识(阅读笔记)">
+  <meta name="author" content="EllenWong">
+  <meta name="keywords" content="">
+  
+  <title>初识目标检测 - WYM&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ellenwong.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EllenWong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/2-cv/cv.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="初识目标检测">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-27 20:16" pubdate>
+        September 27, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初识目标检测</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：October 18, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<ul>
+<li>关于目标检测的一些理解与认识(阅读笔记)<span id="more"></span></li>
+<li>参考论文：<a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s11263-019-01247-4">《Deep Learning for Generic Object Detection: A Survey》</a></li>
+</ul>
+</blockquote>
+<h1 id="1-任务介绍"><a href="#1-任务介绍" class="headerlink" title="1. 任务介绍"></a>1. 任务介绍</h1><p>&emsp;&emsp;<strong>目标检测任务</strong>是计算机视觉领域中重要且基础的一种(另外还有分类与分割)，相比于分类任务，它不仅关注物体的类别信息，更关注物体的位置信息。因此，目标检测任务的输出通常包括对象<strong>实例的类别</strong>与<strong>空间位置及范围</strong>。</p>
+<p><strong>目标检测与分类、语义分割、实例分割的区别：</strong><br><img src="/images/2-cv/2-初识目标检测/1-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图1-1 分类检测分割的区别</font></center>
+
+<!-- <font color=red face="楷体" size=5 > 我是楷体字 </font> -->
+<p><strong>主要挑战：</strong></p>
+<ul>
+<li><strong>精度相关的挑战:</strong><br>检测精度主要由两个原因限制,其一是类内(inter-class)差异大，即每个类别含有不同的对象实例，这些实例之间可能存在着形状、材质、颜色、大小的区别；其二是对象类别多，约有10<sup>4</sup>~10<sup>5</sup>种，需要检测器有极强的区分能力。</li>
+<li><strong>效率及可扩展性相关挑战:</strong><br>检测器应该具有鲁棒性，可以高效地处理不同规模的数据，可以接受内存的实时运行，同时具有迁移到移动或者可穿戴设备的能力。</li>
+</ul>
+<h1 id="2-常用方法"><a href="#2-常用方法" class="headerlink" title="2. 常用方法"></a>2. 常用方法</h1><h2 id="2-1-发展史简述"><a href="#2-1-发展史简述" class="headerlink" title="2.1 发展史简述"></a>2.1 发展史简述</h2><p><img src="/images/2-cv/2-初识目标检测/2-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图2-1 目标检测方式发展</font></center>
+
+<h3 id="2-1-1-传统算法（略）："><a href="#2-1-1-传统算法（略）：" class="headerlink" title="2.1.1 传统算法（略）："></a>2.1.1 传统算法（略）：</h3><pre><code class=" mermaid">graph LR
+    id0[区域选择]
+    id1[特征提取]
+    id2[目标分类]
+    id0 --&gt; id1
+    id1 --&gt; id2
+</code></pre>
+<ul>
+<li><strong>区域选择</strong>是对目标的位置进行定位，用滑动窗口的方式对图像进行遍历，但时间复杂度太高，产生冗余窗口等问题会影响后续特征提取的性能。</li>
+<li><strong>特征提取</strong>由尺度不变特征变换(Scale Invariant Feature Transform,SIFT)开始，手工制作的局部不变特征广受欢迎，在此基础上，梯度直方图(Histogram of Gradients,HOG)、局部二值模式(Local Binary Patterns,LBP)、区域协方差(region covariances)等算法也相继被提出.</li>
+<li><strong>目标分类</strong>是根据提取到的特征进行<strong>分类</strong>，主要有SVM、AdaBoost等。</li>
+</ul>
+<h3 id="2-1-2-深度学习："><a href="#2-1-2-深度学习：" class="headerlink" title="2.1.2 深度学习："></a>2.1.2 深度学习：</h3><p>&emsp;&emsp;相比传统方式而言，深度学习的方式可以学习图像多层次的抽象特征，因此它在大规模数据中有着很重要的优势。<br><strong>对CNN网络结构的认识：</strong><br><img src="/images/2-cv/2-初识目标检测/2-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图2-2 一般DCNN网络结构</font></center>
+
+<p>&emsp;&emsp;由深度学习的方式进行目标检测，子任务有目标分类与定位，输出物体出现在选择图像区域的可能性，进而表示物体的位置与范围。基于深度学习的目标检测算法可以分为one-stage目标检测算法与two-stage目标检测算法，两者在准确度与速度上均取得了很好的提升。</p>
+<h2 id="2-2-一阶段方法-V-S-两阶段方法"><a href="#2-2-一阶段方法-V-S-两阶段方法" class="headerlink" title="2.2 一阶段方法 V.S. 两阶段方法"></a>2.2 一阶段方法 V.S. 两阶段方法</h2><p>&emsp;&emsp;随着图像像素数量的提升，滑动窗口的数量也在二次增长，对计算力的要求也越来越高。针对此问题，采用的方法是级联、共享特征计算和减少每个窗口的计算.对检测框架而言，可分为一阶段检测与二阶段检测。</p>
+<h3 id="2-2-1-一阶段方法"><a href="#2-2-1-一阶段方法" class="headerlink" title="2.2.1 一阶段方法"></a>2.2.1 一阶段方法</h3><p>&emsp;&emsp;一阶段方法一般不直接产生候选框，而是直接将目标转化为回归任务，如</p>
+<h3 id="2-2-2-两阶段-region-based-方法"><a href="#2-2-2-两阶段-region-based-方法" class="headerlink" title="2.2.2 两阶段(region based)方法"></a>2.2.2 两阶段(region based)方法</h3><p>&emsp;&emsp;两阶段方法</p>
+<h1 id="3-数据集与评价指标"><a href="#3-数据集与评价指标" class="headerlink" title="3. 数据集与评价指标"></a>3. 数据集与评价指标</h1><h2 id="3-1-数据集"><a href="#3-1-数据集" class="headerlink" title="3.1 数据集"></a>3.1 数据集</h2><p><img src="/images/2-cv/2-初识目标检测/3-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图3-1 四类数据集展示</font></center>
+
+<p><img src="/images/2-cv/2-初识目标检测/3-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<center><font color=blue >图3-2 四类数据集介绍</font></center>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:left">简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PASCAL VOC</td>
+<td style="text-align:left">用于分类和目标检测的基准数据集，数据集相比其他三种较小。</td>
+</tr>
+<tr>
+<td style="text-align:center">ImageNet</td>
+<td style="text-align:left">图像通常比较集中，有ImageNet1000，包括1000种图像，1.2M的图像，提供了ILSVRC的基准。</td>
+</tr>
+<tr>
+<td style="text-align:center">MS COCO</td>
+<td style="text-align:left">包括更为丰富的场景，贴近现实生活，每个图像包含更丰富的检测对象。</td>
+</tr>
+<tr>
+<td style="text-align:center">Open Images</td>
+<td style="text-align:left">图像更加多样，每个图像平均有8个标注框。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-2-评价指标"><a href="#3-2-评价指标" class="headerlink" title="3.2 评价指标"></a>3.2 评价指标</h2><ul>
+<li>FPS：每秒帧数的检测速度</li>
+<li>precision：准确率</li>
+<li>recall：召回率</li>
+<li>AP：平均精度（由P、R决定）</li>
+<li>mAP：所有检测对象AP的平均值</li>
+<li>IOU：交并比 <script type="math/tex">IOU(b,b^g ) = \frac{area(b \cap b^g )}{area(b \cup b^g)}</script></li>
+</ul>
+<h1 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h1>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Computer-Vision/">Computer Vision</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Object-Detection/">Object Detection</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"66d9351bc44d3e35c662","clientSecret":"91eaf9f3eff9eb4d326e8093a434b488d8e160b6","repo":"EllenWong.github.io","owner":"EllenWong","admin":["EllenWong"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'c0dd180ea7e194d7cd372f99a28af307'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

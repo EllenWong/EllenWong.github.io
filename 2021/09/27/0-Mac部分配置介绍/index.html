@@ -1,0 +1,738 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/computer.png">
+  <link rel="icon" href="/img/cutecat.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="对Mac的一些美化，以及部分工具的介绍">
+  <meta name="author" content="EllenWong">
+  <meta name="keywords" content="">
+  
+  <title>Mac部分配置介绍 - WYM&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ellenwong.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EllenWong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/0-helloworld/helloWorld.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Mac部分配置介绍">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-27 15:50" pubdate>
+        September 27, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mac部分配置介绍</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：October 1, 2021 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>对Mac的一些美化，以及部分工具的介绍<br><span id="more"></span></p>
+<h2 id="1-HomeBrew"><a href="#1-HomeBrew" class="headerlink" title="1. HomeBrew"></a>1. HomeBrew</h2><p><strong>HomeBrew</strong>是一款软件包管理工具，支持macOS系统和Linux系统，有安装、卸载、更新、查看、搜索等功能。这里主要用来管理我的电脑的一部分软件。</p>
+<p>常用命令：<br><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 显示帮助</span><br>brew –help<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 安装软件</span><br>brew install xxx<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 卸载软件</span><br>brew uninstall xxx<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 搜索软件</span><br>brew search xxx<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看经安装软件列表</span><br>brew list<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 更新所有软件</span><br>brew update<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 更新某具体软件</span><br>brew upgrade xxx<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">显示软件内容信息</span><br>brew info xxx<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看哪些已安装的程序需要更新</span><br>brew outdated<br></code></pre></div></td></tr></table></figure><br>cask常用命令与brew相同，可以用<code>brew install --cask xxx</code>来表示，或者直接使用<code>brew install xxx</code> .</p>
+<p>我的homebrew所在路径：<code>/opt/homebrew/Library/Taps/homebrew</code></p>
+<h2 id="2-关于终端（主要使用iterm2）"><a href="#2-关于终端（主要使用iterm2）" class="headerlink" title="2. 关于终端（主要使用iterm2）"></a>2. 关于终端（主要使用iterm2）</h2><p><strong>配置流程：</strong><br><pre><code class=" mermaid">graph LR
+    id0[iterm2]
+    id1[oh-my-zsh]
+    id2[tmux]
+    id3[vim]
+    id0 --&gt; id1
+    id1 --&gt; id2
+    id2 --&gt; id3
+</code></pre><br><strong>注意事项：</strong></p>
+<ul>
+<li>主要采用oh-my-zsh以及某些配色文件在iterm2中进行配置。</li>
+<li>已安装并使用的插件有git，autojump，zsh-syntax- highlighting，zsh-autosuggestion等，在zshrc文件中修改插件名称，并通过<code>source ~/.zshrc</code>指令进行刷新配置，这些插件在github上有详细说明。</li>
+<li>终端代理配置位于zshrc文件内，开启方式为<code>proxy_on</code> 关闭方式为<code>proxy_off</code>。使用了clashx以及AgentNEO来设置代理，端口详见clashx的配置文件（与AgentNEO对应）。可以使用<code>curl www.google.com</code>进行测试，不能用<code>ping</code>进程测试，因为代理使用http或者socket5进行通信。</li>
+</ul>
+<h3 id="2-1-iTerm与Terminal常用快捷键"><a href="#2-1-iTerm与Terminal常用快捷键" class="headerlink" title="2.1 iTerm与Terminal常用快捷键"></a>2.1 iTerm与Terminal常用快捷键</h3><ul>
+<li><span class="label label-primary">command + d</span> 垂直分割视窗</li>
+<li><span class="label label-primary">command + shift + d</span> 水平分割视窗</li>
+<li><span class="label label-primary">command + t</span> 打开新的视窗</li>
+<li><span class="label label-primary">command + w</span> 关闭当前视窗</li>
+<li><span class="label label-primary">command + ;</span> 显示历史命令</li>
+<li><span class="label label-primary">command + enter</span> 全屏</li>
+<li><span class="label label-primary">command + f</span> 查找</li>
+<li><span class="label label-primary">ctrl + l</span> 清屏</li>
+<li><span class="label label-primary">ctrl + d</span> 删除</li>
+<li><span class="label label-primary">ctrl + k</span> 删除光标后的内容</li>
+</ul>
+<h3 id="2-2-tmux终端复用"><a href="#2-2-tmux终端复用" class="headerlink" title="2.2 tmux终端复用"></a>2.2 tmux终端复用</h3><p><strong>tmux</strong> 是一个终端复用开发工具，采用client/server模型，即在一个终端管理多个分离的会话（session）、窗口（window）、面板（panel），其中，一个session有多个window，一个window有多个panel，提高开发效率，使用多个命令行完成多任务，tmux支持窗口与会话解绑，即窗口关闭时，会话不会终止，而是继续运行。（如ssh登录远程服务器）</p>
+<p><strong>前缀键：</strong> <span class="label label-primary">ctrl b</span>或者<span class="label label-primary">ctrl a</span></p>
+<h4 id="2-2-1-启动与退出"><a href="#2-2-1-启动与退出" class="headerlink" title="2.2.1 启动与退出"></a>2.2.1 启动与退出</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">tmux #启动<br>exit #退出<br></code></pre></div></td></tr></table></figure>
+<h4 id="2-2-2-会话管理"><a href="#2-2-2-会话管理" class="headerlink" title="2.2.2 会话管理"></a>2.2.2 会话管理</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 新建会话</span><br><span class="hljs-meta">$</span><span class="bash"> tmux new -s &lt;session-name&gt;</span> <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 分离会话 或者Ctrl+b d</span><br><span class="hljs-meta">$</span><span class="bash"> tmux detach</span> <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看当前所有会话 或者tumx list- session</span><br><span class="hljs-meta">$</span><span class="bash"> tmux ls</span> <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 接入会话</span><br><span class="hljs-meta">#</span><span class="bash"> 使用会话编号</span><br><span class="hljs-meta">$</span><span class="bash"> tmux attach -t 0</span><br><span class="hljs-meta">#</span><span class="bash"> 使用会话名称</span><br><span class="hljs-meta">$</span><span class="bash"> tmux attach -t &lt;session-name&gt;</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 切换会话 或者Ctrl b + s</span><br><span class="hljs-meta">#</span><span class="bash"> 使用会话编号</span><br><span class="hljs-meta">$</span><span class="bash"> tmux switch -t 0</span><br><span class="hljs-meta">#</span><span class="bash"> 使用会话名称</span><br><span class="hljs-meta">$</span><span class="bash"> tmux switch -t &lt;session-name&gt;</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 重命名会话 或者 Ctrl b + $</span><br><span class="hljs-meta">$</span><span class="bash"> tmux rename-session -t 0 &lt;new-name&gt;</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 杀死会话</span><br><span class="hljs-meta">$</span><span class="bash"> tmux kill-session -t 0 &lt;new-name&gt;</span><br><span class="hljs-meta">#</span><span class="bash"> kill-server可以杀死所有会话</span><br></code></pre></div></td></tr></table></figure>
+<h4 id="2-2-3-窗口管理"><a href="#2-2-3-窗口管理" class="headerlink" title="2.2.3 窗口管理"></a>2.2.3 窗口管理</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 新建窗口</span><br><span class="hljs-meta">$</span><span class="bash"> tmux new-window</span><br><span class="hljs-meta">#</span><span class="bash"> 新建一个指定名称的窗口</span><br><span class="hljs-meta">$</span><span class="bash"> tmux new-window -n &lt;window-name&gt;</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 切换窗口</span><br><span class="hljs-meta">#</span><span class="bash"> 切换到指定编号的窗口</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-window -t &lt;window-number&gt;</span><br><span class="hljs-meta">#</span><span class="bash"> 切换到指定名称的窗口</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-window -t &lt;window-name&gt;</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 重命名</span><br><span class="hljs-meta">$</span><span class="bash"> tmux rename-window &lt;new-name&gt;</span><br></code></pre></div></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><span class="label label-primary">ctrl+b c</span></td>
+<td style="text-align:center">创建一个新窗口，状态栏会显示多个窗口的信息</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="label label-primary">Ctrl+b p</span></td>
+<td style="text-align:center">切换到上一个窗口（按照状态栏上的顺序）</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="label label-primary">ctrl+b n</span></td>
+<td style="text-align:center">切换到下一个窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="label label-primary">ctrl+b number</span></td>
+<td style="text-align:center">切换到指定编号的窗口，其中的[number]是状态栏上的窗口编号</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="label label-primary">ctrl+b w</span></td>
+<td style="text-align:center">从列表中选择窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="label label-primary">ctrl+b ,</span></td>
+<td style="text-align:center">窗口重命名</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-2-4-面板管理"><a href="#2-2-4-面板管理" class="headerlink" title="2.2.4 面板管理"></a>2.2.4 面板管理</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 划分上下两个窗格</span><br><span class="hljs-meta">$</span><span class="bash"> tmux split-window</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 划分左右两个窗格</span><br><span class="hljs-meta">$</span><span class="bash"> tmux split-window -h</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 光标切换到上方窗格</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-pane -U</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 光标切换到下方窗格</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-pane -D</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 光标切换到左边窗格</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-pane -L</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 光标切换到右边窗格</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-pane -R</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当前窗格上移</span><br><span class="hljs-meta">$</span><span class="bash"> tmux swap-pane -U</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当前窗格下移</span><br><span class="hljs-meta">$</span><span class="bash"> tmux swap-pane -D</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>快捷键：</strong></p>
+<ul>
+<li><code>Ctrl+b &quot;</code>：划分上下两个窗格。</li>
+<li><code>Ctrl+b %</code>：划分左右两个窗格。</li>
+<li><code>Ctrl+b &lt;arrow key&gt;</code>：光标切换到其他窗格。<code>&lt;arrow key&gt;</code>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键<code>↓</code>。</li>
+<li><code>Ctrl+b ;</code>：光标切换到上一个窗格。</li>
+<li><code>Ctrl+b o</code>：光标切换到下一个窗格。</li>
+<li><code>Ctrl+b &#123;</code>：当前窗格与上一个窗格交换位置。</li>
+<li><code>Ctrl+b &#125;</code>：当前窗格与下一个窗格交换位置。</li>
+<li><code>Ctrl+b Ctrl+o</code>：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。</li>
+<li><code>Ctrl+b Alt+o</code>：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。</li>
+<li><code>Ctrl+b x</code>：关闭当前窗格。</li>
+<li><code>Ctrl+b !</code>：将当前窗格拆分为一个独立窗口。</li>
+<li><code>Ctrl+b z</code>：当前窗格全屏显示，再使用一次会变回原来大小。</li>
+<li><code>Ctrl+b Ctrl+&lt;arrow key&gt;</code>：按箭头方向调整窗格大小。</li>
+<li><code>Ctrl+b q</code>：显示窗格编号。</li>
+</ul>
+<h2 id="3-关于anaconda"><a href="#3-关于anaconda" class="headerlink" title="3. 关于anaconda"></a>3. 关于anaconda</h2><p>首先需要更新文件<code>source ~/.bash_profile</code>,然后再去激活pytorch的环境。（此部分略）</p>
+<ul>
+<li>.bash_profile文件内保存与bash相关的内容，包含anaconda，以及pip与python的位置。</li>
+<li>.zshrc文件保存iterm相关配置</li>
+</ul>
+<h2 id="4-关于vim的使用"><a href="#4-关于vim的使用" class="headerlink" title="4. 关于vim的使用"></a>4. 关于vim的使用</h2><p>vim是一种vi发展出的文本编辑器，包含许多编程的功能；其相关配置文件保存在了～/.vimrc文件中“。</p>
+<ul>
+<li>参考视频<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.imooc.com/video/19472
+">[1]</span></a></sup></li>
+<li>参考GitHub仓库<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://github.com/PegasusWang/vim-config
+">[2]</span></a></sup></li>
+</ul>
+<p><strong>键盘图（图源网络）：</strong><br><img src="/images/0-helloworld/vim.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="4-1-基本介绍"><a href="#4-1-基本介绍" class="headerlink" title="4.1 基本介绍"></a>4.1 基本介绍</h3><blockquote>
+<ul>
+<li>insert-&gt;normal ESC</li>
+<li>a append </li>
+<li>i insert</li>
+<li>o open a line below</li>
+<li>A append after line</li>
+<li>I insert before line</li>
+<li>O append a line above</li>
+</ul>
+<p><strong>命令模式下的使用</strong></p>
+<ul>
+<li>Insert\Normal\Command</li>
+<li>set nu  #显示行号</li>
+<li><strong>vs #竖分屏</strong></li>
+<li><strong>sp #横分屏</strong></li>
+<li>% s/foo/bar/g #全局替换</li>
+<li>/ #查找</li>
+<li>v #块状选择</li>
+<li>V #选择整行</li>
+<li>Ctrl v #方块选择</li>
+</ul>
+</blockquote>
+<h3 id="4-2-快速删除"><a href="#4-2-快速删除" class="headerlink" title="4.2 快速删除"></a>4.2 快速删除</h3><blockquote>
+<ul>
+<li>Ctrl h #删除字符</li>
+<li>Ctrl w #删除单词</li>
+<li>Ctrl u #删除整行</li>
+<li>Ctrl a #移到开头</li>
+<li>Ctrl e #移到结尾</li>
+<li>Ctrl b #前移</li>
+<li>Ctrl f #后移</li>
+<li>Ctrl [/c #相当于Esc</li>
+<li>gi #快速跳转到最后编辑的地方进行插入</li>
+</ul>
+</blockquote>
+<h3 id="4-3-快速移动"><a href="#4-3-快速移动" class="headerlink" title="4.3 快速移动"></a>4.3 快速移动</h3><blockquote>
+<ul>
+<li>w:下一个单词开头 e:单词结尾</li>
+<li>b:上一个单词的开头</li>
+<li>f+单词：寻找</li>
+<li>F+char：向前寻找</li>
+<li>；下一个</li>
+<li>，上一个</li>
+<li>t：单词前一个</li>
+<li>0:行首</li>
+<li>$:行尾</li>
+<li>syntax on:代码高亮</li>
+</ul>
+</blockquote>
+<h3 id="4-4-安装插件"><a href="#4-4-安装插件" class="headerlink" title="4.4 安装插件"></a>4.4 安装插件</h3><blockquote>
+<p>vim-plug</p>
+<ol>
+<li>在plug里增加插件名称</li>
+<li>source ～/.vimrc</li>
+<li>PlugInstall执行安装相应的插件</li>
+</ol>
+<p><strong>插件介绍——~/.vimrc文件</strong></p>
+<ul>
+<li>, + g:跳转到目录树</li>
+<li>，+ v:跳转到当前文件对应目录</li>
+<li>Ctrl w + p: 切换窗口</li>
+<li>Ctrl p:模糊搜索文件</li>
+<li>Ctrl k:代码高亮————Ctrl K: 取消代码高亮</li>
+<li>ss :easy motion快速在整个文件中跳转相应的位置。</li>
+<li>Vim surround:成双成对的编辑//未配置</li>
+</ul>
+</blockquote>
+<h2 id="5-关于Hexo"><a href="#5-关于Hexo" class="headerlink" title="5. 关于Hexo"></a>5. 关于Hexo</h2><ul>
+<li><p>初始化<code>hexo init</code></p>
+</li>
+<li><p>写博客流程</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 在blog文件夹下进行修改设置</span><br>hexo clean<br><span class="hljs-meta">#</span><span class="bash"> 生成blog文件</span><br>hexo g/generate<br><span class="hljs-meta">#</span><span class="bash"> 开启服务</span><br>hexo s/server<br><span class="hljs-meta">#</span><span class="bash"> 此时可以根据本地连接查看当前博客内容</span><br><span class="hljs-meta">#</span><span class="bash"> 部署到github上</span><br>hexo d/deploy<br></code></pre></div></td></tr></table></figure></li>
+<li>使用主题Fluid<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://fluid-dev.github.io/hexo-fluid-docs/
+">[3]</span></a></sup></li>
+</ul>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.imooc.com/video/19472">https://www.imooc.com/video/19472</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/PegasusWang/vim-config">https://github.com/PegasusWang/vim-config</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://fluid-dev.github.io/hexo-fluid-docs/">https://fluid-dev.github.io/hexo-fluid-docs/</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Hello-World/">Hello World</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/tools/">tools</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/03/1-Weekly-211003/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Weekly-211003</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/26/4-Cats/">
+                        <span class="hidden-mobile">关于我遇到的猫</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"66d9351bc44d3e35c662","clientSecret":"91eaf9f3eff9eb4d326e8093a434b488d8e160b6","repo":"EllenWong.github.io","owner":"EllenWong","admin":["EllenWong"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '9fab25df38a73c3349993f9d50ad42ff'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

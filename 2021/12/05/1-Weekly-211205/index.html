@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/computer.png">
+  <link rel="icon" href="/img/cutecat.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本周学习汇报">
+  <meta name="author" content="EllenWong">
+  <meta name="keywords" content="">
+  
+  <title>Weekly-211205 - WYM&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ellenwong.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EllenWong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/1-weeklynote/wn.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Weekly-211205">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-05 22:21" pubdate>
+        December 5, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Weekly-211205</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：December 12, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="本周学习汇报"><a href="#本周学习汇报" class="headerlink" title="本周学习汇报"></a>本周学习汇报</h3><span id="more"></span>
+<blockquote>
+<div>
+            <input type="checkbox" disabled checked="checked">人机交互论文_Effects of Emotion and Agency on Presence in Virtual Reality(PPT)<sup id=fnref:1 class=footnote-ref><a href=#fn:1 rel=footnote><span class=hint--top hint--rounded aria-label=https://dl.acm.org/doi/fullHtml/10.1145/3411764.3445588
+>[1]</span></a></sup>
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">英语课堂展示_The Hundred Schools of Thought(PPT)
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">网络安全论文_深度学习赋能的恶意代码攻击(PPT)<sup id=fnref:2 class=footnote-ref><a href=#fn:2 rel=footnote><span class=hint--top hint--rounded aria-label=http://cjc.ict.ac.cn/online/bfpub/jtt-202058150207.pdf
+>[2]</span></a></sup>
+          </div>
+</blockquote>
+<p>//ppt待下周上传至GitHub仓库</p>
+<h2 id="1-深度学习赋能的恶意代码攻击"><a href="#1-深度学习赋能的恶意代码攻击" class="headerlink" title="1. 深度学习赋能的恶意代码攻击"></a>1. 深度学习赋能的恶意代码攻击</h2><ul>
+<li><strong>恶意代码：</strong>故意编制或设置的、对网络或系统会产生威胁或潜在威胁的计算机代码。有二进制、JavaScript、PowerShell等形式，均可被深度学习的方式处理；</li>
+</ul>
+<h3 id="1-1-赋能攻击链"><a href="#1-1-赋能攻击链" class="headerlink" title="1.1 赋能攻击链"></a>1.1 赋能攻击链</h3><p><img src="/images/1-weeklynote/211205/1.png" srcset="/img/loading.gif" lazyload alt="图1-1 赋能攻击链"></p>
+<ul>
+<li>赋能攻击相当于一个武器（恶意代码）的制造、投放以及发挥其效应的过程。</li>
+</ul>
+<h3 id="1-2-深度学习助力攻击技术"><a href="#1-2-深度学习助力攻击技术" class="headerlink" title="1.2 深度学习助力攻击技术"></a>1.2 深度学习助力攻击技术</h3><h4 id="1-2-1-基于对抗样本生成的自动化免杀"><a href="#1-2-1-基于对抗样本生成的自动化免杀" class="headerlink" title="1.2.1 基于对抗样本生成的自动化免杀"></a>1.2.1 基于对抗样本生成的自动化免杀</h4><ul>
+<li>免杀：使恶意代码不被杀毒软件查杀，两者能够共存。</li>
+</ul>
+<p><img src="/images/1-weeklynote/211205/2.png" srcset="/img/loading.gif" lazyload alt="图1-2 自动化免杀"></p>
+<h4 id="1-2-2-基于自然语言生成的自动化网络钓鱼"><a href="#1-2-2-基于自然语言生成的自动化网络钓鱼" class="headerlink" title="1.2.2 基于自然语言生成的自动化网络钓鱼"></a>1.2.2 基于自然语言生成的自动化网络钓鱼</h4><ul>
+<li>从传统网络钓鱼方式到自动化的网络钓鱼</li>
+</ul>
+<p><img src="/images/1-weeklynote/211205/3.png" srcset="/img/loading.gif" lazyload alt="图1-3 自动化网络钓鱼"></p>
+<h4 id="1-2-3-基于神经网络的精准定位与打击"><a href="#1-2-3-基于神经网络的精准定位与打击" class="headerlink" title="1.2.3 基于神经网络的精准定位与打击"></a>1.2.3 基于神经网络的精准定位与打击</h4><p><img src="/images/1-weeklynote/211205/4.png" srcset="/img/loading.gif" lazyload alt="图1-4 精准定位与打击"></p>
+<ul>
+<li>根据二分类模型对特定图像的检测，其全连接层的输出作为对称密钥，也就是说，只有当特定目标被检测到时，该攻击才会对攻击载荷加密，然后与二分类模型一起嵌入到正常应用程序中。</li>
+</ul>
+<h4 id="1-2-4-基于生成对抗网络的流量模仿"><a href="#1-2-4-基于生成对抗网络的流量模仿" class="headerlink" title="1.2.4 基于生成对抗网络的流量模仿"></a>1.2.4 基于生成对抗网络的流量模仿</h4><p><img src="/images/1-weeklynote/211205/5.png" srcset="/img/loading.gif" lazyload alt="图1-5 流量模仿"></p>
+<ul>
+<li>图源IDSGAN：基于黑盒模型进行检测，设计判别器对两者进行判断。</li>
+</ul>
+<h4 id="1-2-5-基于黑盒模型的攻击意图隐藏"><a href="#1-2-5-基于黑盒模型的攻击意图隐藏" class="headerlink" title="1.2.5 基于黑盒模型的攻击意图隐藏"></a>1.2.5 基于黑盒模型的攻击意图隐藏</h4><p><img src="/images/1-weeklynote/211205/6.png" srcset="/img/loading.gif" lazyload alt="图1-6 攻击意图隐藏"></p>
+<h3 id="1-3-展望"><a href="#1-3-展望" class="headerlink" title="1.3 展望"></a>1.3 展望</h3><h4 id="1-3-1-存在的问题"><a href="#1-3-1-存在的问题" class="headerlink" title="1.3.1 存在的问题"></a>1.3.1 存在的问题</h4><ul>
+<li><strong>重点问题：</strong>新型恶意代码的生成机理、入侵方式、攻击释放原理及生存对抗特性；</li>
+<li><strong>防御措施不完善：</strong>针对基于神经网络的精准定位与打击、基于生成对抗网络的流量模仿、基于黑盒模型的攻击意图隐藏等攻击技术的防御措施尚未被提出。</li>
+</ul>
+<h4 id="1-3-2-未来发展"><a href="#1-3-2-未来发展" class="headerlink" title="1.3.2 未来发展"></a>1.3.2 未来发展</h4><ul>
+<li><strong>攻击者主动利用神经网络：</strong>基于神经网络的精准定位与打击与基于黑盒模型的攻击意图隐藏主动利用深度学习模型作为恶意代码攻击的组件。</li>
+<li><strong>数据集：</strong>需要建立有效、公开的数据集供研究者使用；</li>
+<li><strong>僵尸网络：</strong>存在新的赋能研究的可能性，如僵尸程序的自治，智能僵尸网络(Hivenet和Swarmbot)的出现，这也是主动利用深度神经网络的一种潜在威胁。</li>
+</ul>
+<h2 id="2-情绪与代理对虚拟现实临场感的影响"><a href="#2-情绪与代理对虚拟现实临场感的影响" class="headerlink" title="2. 情绪与代理对虚拟现实临场感的影响"></a>2. 情绪与代理对虚拟现实临场感的影响</h2><h3 id="2-1-实验方法"><a href="#2-1-实验方法" class="headerlink" title="2.1 实验方法"></a>2.1 实验方法</h3><ul>
+<li><strong>数据采集：</strong></li>
+</ul>
+<ol>
+<li>实验时间：平均30分钟。</li>
+<li>任务前问卷调查：参与者需要阅读一份描述该研究的信息表并表示同意。</li>
+<li>实验前已知：VE被设计为愉悦诱导还是恐惧诱导，是否有代理。</li>
+<li>实验中：参与者被协助佩戴HTC Vive。然后，参与者完成校准阶段，在此期间调整HMD Vive，直到他们能够读取呈现的最小文本大小。如果是被分配到HA或者FA条件下，参与者将被告知如何使用手动控制器。</li>
+<li>实验后信息采集：参与者移除HMD，并在电脑屏幕上使用Qualtrics完成评估主观情绪强度、存在和其他测量的问题。在虚拟现实体验结束后，首先完成评估快乐与恐惧的问题。</li>
+</ol>
+<ul>
+<li><strong>参与者：</strong></li>
+</ul>
+<ol>
+<li>人数：121位参与者（39位男性，86位女性）？？？</li>
+<li>年龄：18-45岁，均值21.4，标准差4.40；</li>
+<li>实验分布：FA (n = 30), FNA (n = 29), HA (n = 31) , HNA(n = 31)；</li>
+<li>参与费用：5英镑==42.19人民币；</li>
+<li>其他：最初的问卷调查了参与者的神经疾病史、心理或情绪问题、药物使用、癫痫或医疗设备(如心脏泵)使用的情况。此外，他们还接受了犬恐惧症(害怕狗)的筛查。他们对虚拟现实的体验水平也进行了评估。所有参与者的视力和听力正常或矫正至正常。</li>
+</ol>
+<h3 id="2-2-结果分析"><a href="#2-2-结果分析" class="headerlink" title="2.2 结果分析"></a>2.2 结果分析</h3><ul>
+<li>单因素方差分析<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/151572601
+">[3]</span></a></sup></li>
+</ul>
+<p><img src="/images/1-weeklynote/211205/7.png" srcset="/img/loading.gif" lazyload alt="图2-1 单因素方差分析"></p>
+<ul>
+<li>皮尔逊相关系数<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.zhihu.com/question/19734616/answer/174098489
+">[4]</span></a></sup></li>
+</ul>
+<p><img src="/images/1-weeklynote/211205/8.png" srcset="/img/loading.gif" lazyload alt="图2-2 皮尔逊相关系数"></p>
+<ul>
+<li>t检验<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/138711532
+">[5]</span></a></sup><br><strong>1. 单样本均值检验（One-sample t-test）</strong><br>  用于检验总体方差未知、正态数据或近似正态的单样本的均值是否与已知的总体均值相等<br><strong>2. 两独立样本均值检验（Independent two-sample t-test）</strong><br>  用于检验两对独立的正态数据或近似正态的样本的均值是否相等，这里可根据总体方差是否相等分类讨论<br><strong>3. 配对样本均值检验（Dependent t-test for paired samples）</strong><br>  用于检验一对配对样本的均值的差是否等于某一个值<br><strong>4. 回归系数的显著性检验（t-test for regression coefficient significance）</strong><br>  用于检验回归模型的解释变量对被解释变量是否有显著影响</li>
+</ul>
+<h2 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h2><ul>
+<li><strong>组会：</strong>《半监督目标检测任务及研究进展概述》；</li>
+<li><strong>工程数学：</strong>矩阵指数函数、矩阵三角函数、函数矩阵对纯量的导数与积分、函数向量的线性相关性、矩阵的广义逆；</li>
+<li><strong>网络安全：</strong>《基于卷积神经网络的低嵌入率空域隐写分析》；</li>
+<li><strong>高级算法分析：</strong>聚类+大作业思考；</li>
+<li><strong>高级机器学习：</strong>概率图模型；</li>
+<li><strong>科技论文写作：</strong>method、results、conclusion、acknowledgments、references等的撰写；</li>
+</ul>
+<h2 id="4-下一步计划"><a href="#4-下一步计划" class="headerlink" title="4. 下一步计划"></a>4. 下一步计划</h2><ol>
+<li>Presentation*3；</li>
+<li>动态规划算法的大作业论文撰写；</li>
+<li>机器学习综述论文大纲的确定及对之前阅读论文的整理；</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/fullHtml/10.1145/3411764.3445588">https://dl.acm.org/doi/fullHtml/10.1145/3411764.3445588</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="http://cjc.ict.ac.cn/online/bfpub/jtt-202058150207.pdf">http://cjc.ict.ac.cn/online/bfpub/jtt-202058150207.pdf</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/151572601">https://zhuanlan.zhihu.com/p/151572601</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19734616/answer/174098489">https://www.zhihu.com/question/19734616/answer/174098489</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/138711532">https://zhuanlan.zhihu.com/p/138711532</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Weekly-Note/">Weekly Note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/presentation/">presentation</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/12/1-Weekly-211212/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Weekly-211212</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/28/1-Weekly-211128/">
+                        <span class="hidden-mobile">Weekly-211128</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"66d9351bc44d3e35c662","clientSecret":"91eaf9f3eff9eb4d326e8093a434b488d8e160b6","repo":"EllenWong.github.io","owner":"EllenWong","admin":["EllenWong"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '841c16535d8d08f16af942476280e7f0'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

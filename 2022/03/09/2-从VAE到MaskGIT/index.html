@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/computer.png">
+  <link rel="icon" href="/img/cutecat.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本篇是关于一次组会汇报的整理，主题为《生成式模型的发展：从VAE到MaskGIT》，主要记录了三篇文章，包括了VQ-VAE、VQ-GAN以及MaskGIT。">
+  <meta name="author" content="EllenWong">
+  <meta name="keywords" content="">
+  
+  <title>从VAE到MaskGIT(一) - WYM&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ellenwong.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EllenWong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/2-cv/cv.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="从VAE到MaskGIT(一)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-09 11:20" pubdate>
+        March 9, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从VAE到MaskGIT(一)</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：March 12, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本篇是关于一次组会汇报的整理，主题为《生成式模型的发展：从VAE到MaskGIT》，主要记录了三篇文章，包括了VQ-VAE、VQ-GAN以及MaskGIT。生成模型旨在模拟生成<font color = red ><b>与现实世界中观察到的真实数据非常相似的数据</b></font>，作为生成模型的一大分支，VAE和GAN的论文分别与2013年与2014年发表，是之后很多年图像生成任务的基石。而本次汇报讲述的是VAE（变分自编码器）的这一大分支的一些发展，包括它面临的一些问题与这些问题的解决方案。</p>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><h3 id="1-1-什么是生成式模型？"><a href="#1-1-什么是生成式模型？" class="headerlink" title="1.1 什么是生成式模型？"></a>1.1 什么是生成式模型？</h3><p>从概率分布的角度来讲，生成式模型是对<code>x</code>与<code>y</code>的联合概率<code>p(x,y)</code>建模，而判别式模型是对<code>x</code>的条件下，<code>y</code>的条件概率<code>p(y|x;θ)</code>的建模。</p>
+<ul>
+<li><strong>判别式模型（结果导向）：</strong> 根据原有数据集不同的类别数据，学习得到类别之间的差异。根据输入样本<code>x</code>的特征判别其类别。所以它不关心数据是怎么生成的，而是只关心样本之间的差别，根据这种差异性进行分类。</li>
+<li><strong>生成式模型（源头导向）：</strong> 尝试找出数据是怎么生成的，了解每一类样本的一种分布。要判别样本<code>x</code>的类别，要与所有的<code>y</code>进行比较，实际预测结果取决于生成概率最大的<code>y</code>.一般而言生成式模型不做分类任务，因为它的分类效果远差于判别式模型。</li>
+</ul>
+<p class="note note-warning">生成式模型要学习数据分布，反映数据本身的相似度。</p>
+
+<p>随着深度学习的出现以及神经网络的发展，利用神经网络模拟数据生成过程可以达到更好的效果，可以更好地在给定数据集的情况下，产生于数据集同分布的新样本。</p>
+<ul>
+<li><strong>训练数据集：</strong> 以图像为例（当然也可以是其他类型的数据，比如语音、文字、网络流量等等），每一张图像都可以看作是在一个分布 <script type="math/tex">P_{data}</script> 中抽样得到的样本,如果能够得到 <script type="math/tex">P_{data}</script> 我们就可以无限制地抽样出一些样本，也就可以得到一些与真实图像非常相近的生成图像（<font color = red><b>密度估计问题</b></font>）。但可惜这个分布是不可知的（我们无法根据有限的数据集直接推导出一个高维分布）。</li>
+<li><strong>生成数据：</strong> 假设生成图像服从分布 <script type="math/tex">P_{model}</script>,使可控的已知的分布 <script type="math/tex">P_{model}</script> 与 <script type="math/tex">P_{data}</script> 尽可能接近，就可以近似得知 <script type="math/tex">P_{data}</script> 。</li>
+</ul>
+<p>根据对 <script type="math/tex">P_{model}</script> 的定义是显式还是隐式的可以把生成式模型分为以下两类，比较有代表性的是VAE与GAN。</p>
+<p><img src="/images/2-cv/220309/2.png" srcset="/img/loading.gif" lazyload alt="图1.1 GAN"></p>
+<p><img src="/images/2-cv/220309/3.png" srcset="/img/loading.gif" lazyload alt="图1.2 VAE"></p>
+<ul>
+<li><strong>显式密度估计：</strong> 显式构建样本的密度估计函数 <script type="math/tex">p(x;\theta)</script>,通过<strong>最大似然估计</strong>（优化模型参数来最大化在训练数据上的预测概率）来求解参数。</li>
+<li><strong>隐式密度估计：</strong> 不需要构建样本的密度估计函数，只需要拟合模型，使其能够生成复合数据分布的样本。</li>
+</ul>
+<p><img src="/images/2-cv/220309/1.png" srcset="/img/loading.gif" lazyload alt="图1.3 生成模型的分类"></p>
+<h3 id="1-2-生成式模型有哪些应用？"><a href="#1-2-生成式模型有哪些应用？" class="headerlink" title="1.2 生成式模型有哪些应用？"></a>1.2 生成式模型有哪些应用？</h3><p>在视觉领域，生成式模型主要应用于<strong>图像生成</strong>，图像生成可以分为有条件和无条件两种，有条件的图像生成通常指的是生成具体某一种类别的图像，而无条件图像生成只要生成与真实图像相似的一批图像就可以了。</p>
+<p>在图像生成的基础上，有着许多形形色色的子领域（促进了一波艺（鬼）术（畜）的发展），有代表性的包括，<strong>图像编辑、风格迁移、文本图像生成、图像扩展、图像修复、根据深度图合成图像、根据语义图合成图像等等</strong>，在我看来，这些不同的任务也就是在原始的图像生成上增加了不同的先验信息，只是这些先验知识有的简单有的复杂，最简单的也就是标签，而复杂的就会有一些空间的信息，比如语义图，深度图什么的。而模型的输出同样都是一些图像（尽可能真实）。</p>
+<p><img src="/images/2-cv/220309/4.png" srcset="/img/loading.gif" lazyload alt="图1.4 生成式模型的应用"></p>
+<h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><blockquote>
+<p>那么我们为什么要研究生成式模型？我个人认为它是和创造力有关，当然这么想也不一定全面和准确。当前人工智能应该还在一个初级阶段，但它的出现，已然可以取代许多工作了，那些不需要创造力的，重复性的工作，一方面确实会造成失业问题，另一方面也确实在把人们从重复性的工作中解放出来，所以我认为它是利大于弊的。</p>
+<p>而生成模型，它赋予了计算机模拟生成的能力，使它去创造一些原本世界上没有的东西，艺术、文学、诗歌，这些人类独有的元素。我曾看过一个节目，节目中主持人让所有人判断两首诗，哪一首是人写的，哪一首是机器写的，结果确实存在少数部分的人判断错了。前不久我看视频，发现有些生成器居然可以生成小说了，虽然一眼就能看出生成的文章十分粗糙低质，但它居然有了这种能力，一种合成有意义的语句的能力。对视频，对图像而言，这种例子更是数不胜数，合成人物演讲视频，合成一些人眼都看不出真假照片，这甚至都能对安全造成威胁。这说明，生成模型也确实发展到了一个新的高度，是好是坏不太好评判，但是很有趣，我只能这么说。要论威胁，我觉得还是要警惕一些的，科技是双刃剑的道理谁都懂。要论优势，它是否能解放劳动力？是否能让我们的生活更加便利？它研究的意义到底是什么？我没有想明白，我只知道它很好玩，而且可以数据增强哈哈哈哈。但是啊，如果“生成”这种任务完全完成了的话，那我们的很多资源是不是取之不尽，用之不竭了呢？</p>
+<p>”如果我们制造出了和人智力相当的机器人，那么我们可以肯定的说生成模型一定是其中的一部分。“我在某篇博客上看到了这句话。如果要对生成模型溯源，它最基本的理论基础也不过是概率分布，要解决的是密度估计的问题。可本篇的介绍也不过是冰山一角罢了。</p>
+</blockquote>
+<h3 id="1-3-怎样评价生成样本的优劣？"><a href="#1-3-怎样评价生成样本的优劣？" class="headerlink" title="1.3 怎样评价生成样本的优劣？"></a>1.3 怎样评价生成样本的优劣？</h3><p> 一般而言，我们需要一个可量化的评价指标来衡量模型优劣，比如使用分类准确率评价分类模型的性能，使用均方误差评价回归模型的性能。对生成模型来讲也是如此。只是它的指标似乎没有那么直观。</p>
+<p> 生成样本的优劣一般指的是生成的图像的<strong>质量和多样性</strong>，其中质量衡量了生成的每一张图像是不是真实，这里的真实就包括了图像不能模糊，也不能清晰但是很奇怪，而多样性衡量了这一组生成的图像是不是足够分散，因为生成一组相似度很高的图像也是没什么意义的。以下是两类常用的指标。</p>
+<h4 id="1-3-1-Inception-Score（IS）指标"><a href="#1-3-1-Inception-Score（IS）指标" class="headerlink" title="1.3.1 Inception Score（IS）指标"></a>1.3.1 Inception Score（IS）指标</h4><p><img src="/images/2-cv/220309/5.png" srcset="/img/loading.gif" lazyload alt="图1.5 生成式模型的应用"></p>
+<p>IS指标是基于一批图像送入Inception模型分类的结果来计算的，它的最基本的思想是，对一张图像而言，分类结果越集中，说明这张图像质量越好（毕竟质量足够好计算机才能清晰地认识它），而对于一批图像而言，分类结果应该尽可能分散，也就是说这批图像应该尽可能平均地分布在每个类别中，这样做的原因是出于对多样性的考虑。</p>
+<p>而<strong>分散、集中</strong>等用信息的角度考虑，是熵的一种体现（<strong>熵：信息量越大，熵越大，数据越随机</strong>），综合两个指标，IS采用<strong>互信息</strong>（<strong>给定一个随机变量后，另一个随机变量的不确定性减少程度，也叫信息增益</strong>）的概念，用以描述给定生成样本以后，原始标签不确定性的减少程度（就是样本质量比较好嘛），IS的表达式简要推导：</p>
+<script type="math/tex; mode=display">I(x ; y)=H(y)-H(y \mid x) = \mathbb{E}_{x:}\left[D_{K L}(p(y \mid x) \| p(y))\right]</script><p>其中，KL散度衡量两个分布之间的距离。</p>
+<ul>
+<li><strong>H(y)</strong>:最大化，也就是对于输入的样本，通过inception_v3模型后的类别要均衡，衡量模式坍塌。</li>
+<li><strong>H(y|x)</strong>:最小化，说明对输入的样本，通过inception_v3模型后预测的某一类别的置信度要高，衡量图像生成的质量。</li>
+</ul>
+<p>所以IS指标越大越好。</p>
+<p><strong>IS指标存在的问题：</strong></p>
+<ul>
+<li>偏爱ImageNet中的物体类别，泛化性差。</li>
+<li>类内模式崩溃问题，某一类的图像集中到一个点。</li>
+</ul>
+<h4 id="1-3-2-Frechet-Inception-Distance（FID）指标"><a href="#1-3-2-Frechet-Inception-Distance（FID）指标" class="headerlink" title="1.3.2 Fréchet Inception Distance（FID）指标"></a>1.3.2 Fréchet Inception Distance（FID）指标</h4><p><img src="/images/2-cv/220309/6.png" srcset="/img/loading.gif" lazyload alt="图1.6 生成式模型的应用"></p>
+<p>FID指标比IS指标更看重真实数据的影响，它会取<strong>生成样本与真实样本的2048个中间特征</strong>进行比较，假设中间特征符合<strong>多元高斯分布</strong>，计算两个分布之间的<strong>弗雷歇距离</strong>，FID的数值越小，表示两个高斯分布越接近。</p>
+<p>所以FID指标越小越好。</p>
+<p>实践中发现，FID对噪声具有比较好的鲁棒性，能够对生成图像的质量有比较好的评价，其给出的分数与人类的视觉判断比较一致，并且FID的计算复杂度并不高。整体而言，FID还是比较有效的，其理论上的不足之处在于：高斯分布的简化假设在实际中并不成立。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Computer-Vision/">Computer Vision</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/VAE/">VAE</a>
+                    
+                      <a class="hover-with-bg" href="/tags/VQVAE/">VQVAE</a>
+                    
+                      <a class="hover-with-bg" href="/tags/VQGAN/">VQGAN</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MaskGIT/">MaskGIT</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/27/1-Weekly-211226/">
+                        <span class="hidden-mobile">Weekly-211226</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"66d9351bc44d3e35c662","clientSecret":"91eaf9f3eff9eb4d326e8093a434b488d8e160b6","repo":"EllenWong.github.io","owner":"EllenWong","admin":["EllenWong"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'db8ecec49644c1d626d30b3cf358a049'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
