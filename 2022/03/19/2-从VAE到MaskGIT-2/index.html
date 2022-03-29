@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/computer.png">
+  <link rel="icon" href="/img/cutecat.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本篇是关于一次组会汇报的整理，主题为《生成式模型的发展：从VAE到MaskGIT》的第二部分，主要记录了三篇文章，包括了VQ-VAE、VQ-GAN以及MaskGIT。">
+  <meta name="author" content="EllenWong">
+  <meta name="keywords" content="">
+  
+  <title>从VAE到MaskGIT(二) - WYM&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ellenwong.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EllenWong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/2-cv/cv.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="从VAE到MaskGIT(二)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-19 16:07" pubdate>
+        March 19, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      30
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从VAE到MaskGIT(二)</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：March 29, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p><strong>图像生成的一般要求：</strong></p>
+<ul>
+<li>生成的图像与真实图像相似，且清晰度比较高（具有真实性）</li>
+<li>生成的图像不在原始数据集中，且尽可能地分散（具有多样性）</li>
+</ul>
+</blockquote>
+<h2 id="2-VAE-based生成式模型的改进"><a href="#2-VAE-based生成式模型的改进" class="headerlink" title="2. VAE-based生成式模型的改进"></a>2. VAE-based生成式模型的改进</h2><p>自编码器最早出现在1986年，而今年的一月份，TOELT LLC的AI科学家对自编码器进行了综述性的介绍<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/pdf/2201.03898.pdf
+">[1]</span></a></sup>。自编码器包含了<code>encoder</code>和<code>decoder</code>以及一个<code>latent code</code>。</p>
+<p class="note note-warning">学习尽可能低的误差重建观测值，以更好地学习数据的特征表示</p>
+
+<ul>
+<li><code>Encoder</code>: 用于对原始的观测图像<code>x</code>进行压缩，以得到原始图像中基本的一些信息，称为<strong>latent code</strong>。</li>
+<li><code>Decoder</code>: 对<strong>latent code</strong>进行重构，以得到重构后的图像<code>x&#39;</code>，</li>
+<li>重构误差：</li>
+</ul>
+<script type="math/tex; mode=display">L_{\mathrm{AE}}(E, D)=\frac{1}{n} \sum_{i=1}^{n}\left(\mathbf{x}^{(i)}-D\left(E\left(\mathbf{x}^{(i)}\right)\right)\right)^{2}</script><p>然而，在自编码器的学习过程中，建立的是一对一的映射，因此<strong>latent code</strong>在隐空间里是不连续的，它的生成过程是不可控的，也就是说它对输入的噪声会十分敏感。一个常见的做法就是更改<strong>latent code</strong>的分布形式，使其尽可能地连续化。</p>
+<h3 id="2-1-Variational-Autoencoder-VAE"><a href="#2-1-Variational-Autoencoder-VAE" class="headerlink" title="2.1 Variational Autoencoder(VAE)"></a>2.1 Variational Autoencoder(VAE)</h3><p class="note note-warning">既然我们无法直接获得样本x的分布，那么我们就可以假设存在一个x对应的隐式表征z，z满足某种先验分布（人为指定），z经过解码以后可以映射到x的近似真实分布。这样做的好处是，我们可以在标准正态分布上采样得到样本近似分布，再在样本近似分布上采样来生成样本</p>
+
+<h4 id="2-1-1-变分自编码器的结构"><a href="#2-1-1-变分自编码器的结构" class="headerlink" title="2.1.1 变分自编码器的结构"></a>2.1.1 变分自编码器的结构</h4><p><img src="/images/2-cv/220329/1.png" srcset="/img/loading.gif" lazyload alt="图2.1 变分自编码器结构"></p>
+<p>如图，变分自编码器<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/1312.6114
+">[2]</span></a></sup>的结构与自编码器相似，不同点在于对<strong>latent code</strong>的处理。</p>
+<ul>
+<li><strong>latent code</strong>：属性的分布既可以描述成离散的形式，也可以描述成连续的概率分布的形式，而使用连续的概率分布形式来进行属性表示可以更好地对分布进行描述，从而在生成图像过程中更好地进行采样。</li>
+<li><code>Encoder</code>: 学习 <script type="math/tex">\mu</script> 和 <script type="math/tex">\sigma</script> 两个编码，同时随机采样一个正态分布的编码 <script type="math/tex">\epsilon</script> 来对<strong>latent code</strong>进行表示。</li>
+<li><code>Decoder</code>: 根据<strong>latent code</strong>得到生成图像<code>x&#39;</code>。</li>
+</ul>
+<p><strong>训练过程</strong></p>
+<p class="note note-warning"> 通过设计latent code的分布形式，进而控制图片生成的过程。 </p>
+
+<p><img src="/images/2-cv/220329/2.png" srcset="/img/loading.gif" lazyload alt="图2.2 变分自编码器训练过程"></p>
+<p>可以看出，编码器和解码器分别对应给出了z和x的条件概率分布。当训练好变分自编码器之后，生成数据只需要解码器网络，即，先从设定好的z的先验分布中采样，接着对数据x进行采样。</p>
+<h4 id="2-1-2-变分自编码器的后验坍塌问题（posterior-collapse）"><a href="#2-1-2-变分自编码器的后验坍塌问题（posterior-collapse）" class="headerlink" title="2.1.2 变分自编码器的后验坍塌问题（posterior collapse）"></a>2.1.2 变分自编码器的后验坍塌问题（posterior collapse）</h4><p><img src="/images/2-cv/220329/3.png" srcset="/img/loading.gif" lazyload alt="图2.3 后验坍塌问题"></p>
+<ul>
+<li><strong>噪声太大：</strong>均值和方差的学习不稳定，<code>Decoder</code>开始忽略z，直接自行重构。</li>
+<li><strong>信号太弱：</strong>均值和方差的学习与输入x几乎没什么关系，从而崩溃于常数值a与b，此时的z没有什么价值。</li>
+</ul>
+<p>注：NeurlPS 2019 的一篇文章<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/1911.02469
+">[3]</span></a></sup>对此现象进行了分析，表明一味的假设单一隐变量z，企图用z求边际分布来拟合真实分布，这可能是导致后验失效的真正原因。因此需要<strong>增加z分布的复杂度，而不是用单一的高斯分布</strong>。</p>
+<h3 id="2-2-Vector-Quantised-Variational-Autoencoder-VQ-VAE"><a href="#2-2-Vector-Quantised-Variational-Autoencoder-VQ-VAE" class="headerlink" title="2.2 Vector Quantised Variational Autoencoder(VQ-VAE)"></a>2.2 Vector Quantised Variational Autoencoder(VQ-VAE)</h3><blockquote>
+<p><strong>摘要<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/1711.00937
+">[4]</span></a></sup></strong><br>Learning useful representations without supervision remains a key challenge in machine learning. In this paper, we propose a simple yet powerful generative model that learns such discrete representations. Our model, the Vector Quantised-Variational AutoEncoder (VQ-VAE), <strong>differs from VAEs in two key ways: the encoder network outputs discrete, rather than continuous, codes; and the prior is learnt rather than static.</strong> In order to learn a discrete latent representation, we incorporate ideas from <strong>vector quantisation (VQ)</strong>. Using the VQ method allows the model to circumvent issues of “posterior collapse” -— where the latents are ignored when they are paired with a powerful autoregressive decoder -— typically observed in the VAE framework. Pairing these representations with an autoregressive prior, the model can generate high quality images, videos, and speech as well as doing high quality speaker conversion and unsupervised learning of phonemes, providing further evidence of the utility of the learnt representations.</p>
+</blockquote>
+<h4 id="2-2-1-离散化表达——向量量化"><a href="#2-2-1-离散化表达——向量量化" class="headerlink" title="2.2.1 离散化表达——向量量化"></a>2.2.1 离散化表达——向量量化</h4><p><img src="/images/2-cv/220329/4.png" srcset="/img/loading.gif" lazyload alt="图2.4 阶段1-向量量化"></p>
+<ul>
+<li><strong>向量量化：</strong>找到既定点，当作某一区间的代表。既定点的依据是失真最小的少数代表向量组，也就是字典向量（codebook）。</li>
+<li><strong>方法：</strong>学习一个codebook，实现 <script type="math/tex">z_{e}(x)</script> 到 <script type="math/tex">z_{q}(x)</script> 的映射。</li>
+<li><strong>损失函数：</strong>第一部分是重构误差，第二部分和第三部分通过stop gradient的方式，分别对codebook和<code>Encoder</code>进行学习。</li>
+</ul>
+<h4 id="2-2-2-自回归先验的引入"><a href="#2-2-2-自回归先验的引入" class="headerlink" title="2.2.2 自回归先验的引入"></a>2.2.2 自回归先验的引入</h4><p><img src="/images/2-cv/220329/5.png" srcset="/img/loading.gif" lazyload alt="图2.5 阶段2-自回归先验的引入"></p>
+<ul>
+<li><strong>目的：</strong>得知整张图像在所有图像中出现的概率，就可以通过此概率进行采样，以得到生成的图像。</li>
+<li><strong>方式：</strong>通过类推连乘的方式，得到最终某一张图像出现的概率。根据条件概率依次抽取剩余像素数值，这个过程称为自回归。</li>
+<li><strong>损失函数：</strong>负对数似然。</li>
+</ul>
+<h4 id="2-2-3-层级结构——VQ-VAE2"><a href="#2-2-3-层级结构——VQ-VAE2" class="headerlink" title="2.2.3 层级结构——VQ-VAE2"></a>2.2.3 层级结构——VQ-VAE2</h4><p><img src="/images/2-cv/220329/6.png" srcset="/img/loading.gif" lazyload alt="图2.6 训练过程"></p>
+<p><img src="/images/2-cv/220329/7.png" srcset="/img/loading.gif" lazyload alt="图2.7 生成过程"></p>
+<h3 id="2-3-Vector-Quantised-Generative-Adversarial-Network-VQ-GAN"><a href="#2-3-Vector-Quantised-Generative-Adversarial-Network-VQ-GAN" class="headerlink" title="2.3 Vector Quantised Generative Adversarial Network(VQ-GAN)"></a>2.3 Vector Quantised Generative Adversarial Network(VQ-GAN)</h3><blockquote>
+<p><strong>摘要<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/2012.09841
+">[5]</span></a></sup></strong><br>Designed to learn <strong>long-range interactions on sequential data</strong>, transformers continue to show state-of-the-art results on a wide variety of tasks. In contrast to CNNs, they containno <strong>inductive bias</strong> that prioritizes local interactions. This makes them expressive, but also computationally infeasible for long sequences, such as <strong>high-resolution images</strong>. We demonstrate how combining the effectiveness of the inductive bias of CNNs with the expressivity of transformers enables them to model and thereby synthesize high-resolution images. We show how to <strong>(i) use CNNs to learn a contextrich vocabulary of image constituents, and in turn (ii) utilize transformers to efficiently model their composition within high-resolution images.</strong> Our approach is readily applied to conditional synthesis tasks, where both non-spatial information, such as object classes, and spatial information, such as segmentations, can control the generated image. In particular, we present the first results on semanticallyguided synthesis of megapixel images with transformers. Project page at <a target="_blank" rel="noopener" href="https://git.io/JLlvY">https://git.io/JLlvY</a>.</p>
+</blockquote>
+<h4 id="2-3-1-阶段1-损失函数的改进与GAN的引入"><a href="#2-3-1-阶段1-损失函数的改进与GAN的引入" class="headerlink" title="2.3.1 阶段1:损失函数的改进与GAN的引入"></a>2.3.1 阶段1:损失函数的改进与GAN的引入</h4><p><img src="/images/2-cv/220329/8.png" srcset="/img/loading.gif" lazyload alt="图2.8"></p>
+<h4 id="2-3-2-阶段2-利用Transformer学习自回归先验"><a href="#2-3-2-阶段2-利用Transformer学习自回归先验" class="headerlink" title="2.3.2 阶段2:利用Transformer学习自回归先验"></a>2.3.2 阶段2:利用Transformer学习自回归先验</h4><p><img src="/images/2-cv/220329/9.png" srcset="/img/loading.gif" lazyload alt="图2.9"></p>
+<h4 id="2-3-3-条件图像生成"><a href="#2-3-3-条件图像生成" class="headerlink" title="2.3.3 条件图像生成"></a>2.3.3 条件图像生成</h4><p>VQ-GAN也对不同条件的图像生成进行了探索，包括<strong>有空间信息的（语义图、深度图等等）条件图像生成</strong>，以及<strong>无空间信息的条件图像生成</strong>。条件可以在自回归先验的学习过程中引入进去，而对有空间信息的条件则需要进一步的对图像进行量化，用一个具体的向量进行条件表示。</p>
+<p><img src="/images/2-cv/220329/10.png" srcset="/img/loading.gif" lazyload alt="图2.10"></p>
+<h3 id="2-4-Masked-Generative-Image-Transformer-MaskGIT"><a href="#2-4-Masked-Generative-Image-Transformer-MaskGIT" class="headerlink" title="2.4 Masked Generative Image Transformer(MaskGIT)"></a>2.4 Masked Generative Image Transformer(MaskGIT)</h3><blockquote>
+<p><strong>摘要<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/2202.04200
+">[6]</span></a></sup></strong><br>Generative transformers have experienced rapid popularity growth in the computer vision community in synthesizing high-fidelity and high-resolution images. <strong>The best generative transformer models so far, however, still treat an image naively as a sequence of tokens, and decode an image sequentially following the raster scan ordering</strong> (i.e. lineby-line). We find this strategy neither optimal nor efficient. This paper proposes a novel image synthesis paradigm using a bidirectional transformer decoder, which we term MaskGIT. During training, <strong>MaskGIT learns to predict randomly masked tokens by attending to tokens in all directions. At inference time, the model begins with generating all tokens of an image simultaneously, and then refines the image iteratively conditioned on the previous generation.</strong> Our experiments demonstrate that MaskGIT significantly outperforms the state-of-the-art transformer model on the ImageNet dataset, and accelerates autoregressive decoding by up to 64x. Besides, we illustrate that MaskGIT can be easily extended to various image editing tasks, such as inpainting, extrapolation, and image manipulation.</p>
+</blockquote>
+<h4 id="2-4-1-改进原因"><a href="#2-4-1-改进原因" class="headerlink" title="2.4.1 改进原因"></a>2.4.1 改进原因</h4><ul>
+<li><strong>直觉的角度：</strong>如画家绘画，先是框架，再逐步填充细节完善整张图像。</li>
+<li><strong>计算的角度：</strong>图像作为平面序列意味着自回归序列长度呈二次方增长。</li>
+</ul>
+<h4 id="2-4-2-MVTM的设计与训练过程"><a href="#2-4-2-MVTM的设计与训练过程" class="headerlink" title="2.4.2 MVTM的设计与训练过程"></a>2.4.2 MVTM的设计与训练过程</h4><p><img src="/images/2-cv/220329/11.png" srcset="/img/loading.gif" lazyload alt="图2.11"></p>
+<h4 id="2-4-3-MVTM的图像生成步骤"><a href="#2-4-3-MVTM的图像生成步骤" class="headerlink" title="2.4.3 MVTM的图像生成步骤"></a>2.4.3 MVTM的图像生成步骤</h4><p><img src="/images/2-cv/220329/12.png" srcset="/img/loading.gif" lazyload alt="图2.12"></p>
+<h4 id="2-4-4-掩码策略"><a href="#2-4-4-掩码策略" class="headerlink" title="2.4.4 掩码策略"></a>2.4.4 掩码策略</h4><p><img src="/images/2-cv/220329/13.png" srcset="/img/loading.gif" lazyload alt="图2.13"></p>
+<p>注：MaskGIT第一阶段延续了VQ-GAN的设计，第二阶段采用了Bert的双向Transformer结构，可以更快更高效地学习到图像中的上下文信息。</p>
+<h2 id="3-总结与展望"><a href="#3-总结与展望" class="headerlink" title="3. 总结与展望"></a>3. 总结与展望</h2><h3 id="3-1-总结"><a href="#3-1-总结" class="headerlink" title="3.1 总结"></a>3.1 总结</h3><p class="note note-warning"> 本质上都是解决密度估计问题，实现真实数据集与生成数据集的同分布。 </p>
+
+<ul>
+<li><p><strong>图像生成的需求：</strong></p>
+<ul>
+<li><strong>多样性：</strong>离散化设计latent space，学习codebook存储尽可能多的信息。</li>
+<li><strong>高清：</strong>利用Transformer更好地获取全局信息。</li>
+<li><strong>计算效率：</strong>并行解码效率优于顺序解码。</li>
+</ul>
+</li>
+<li><p><strong>系列模型的改进：</strong></p>
+<ul>
+<li><strong>VAE：</strong>强制使latent code满足正态分布，以便生成新的图像。</li>
+<li><strong>VQVAE：</strong>解决后验坍塌问题，使latent code有更好的表现力。</li>
+<li><strong>VQVAE-2：</strong>采用多层结构，更好地获取图像结构信息与纹理信息。</li>
+<li><strong>VQGAN：</strong>使用Transformer作为自回归模型，改进重构误差。</li>
+<li><strong>MaskGIT：</strong>采用双向Transformer结构，并行解码，双向生成，提高计算效率。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-展望"><a href="#3-2-展望" class="headerlink" title="3.2 展望"></a>3.2 展望</h3><ul>
+<li><strong>latent code的设计：</strong>是否可以对latent code进行更好的连续化设计，以便于存储连续<br>的属性信息，达到更好的图像编辑的效果？</li>
+<li><strong>网络结构：</strong>对Encoder而言，是否能用Transformer代替CNN，更好地利用全局信息？ </li>
+<li><strong>损失函数：</strong>有无更好的重构误差，以判断生成图像与真实图像的相似性。</li>
+<li><strong>Mask的设计：</strong>从绘画的角度，画者可以对图像进行修改，但MaskGIT的掩码设计是固定的不可对前一轮的mask进行修改，如果使mask可修改，应采取什么策略，是否能达到更好的效果？</li>
+</ul>
+<h3 id="3-3-其他经典生成式模型"><a href="#3-3-其他经典生成式模型" class="headerlink" title="3.3 其他经典生成式模型"></a>3.3 其他经典生成式模型</h3><p><img src="/images/2-cv/220329/14.png" srcset="/img/loading.gif" lazyload alt="图2.14"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2201.03898.pdf">https://arxiv.org/pdf/2201.03898.pdf</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1312.6114">https://arxiv.org/abs/1312.6114</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1911.02469">https://arxiv.org/abs/1911.02469</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1711.00937">https://arxiv.org/abs/1711.00937</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2012.09841">https://arxiv.org/abs/2012.09841</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2202.04200">https://arxiv.org/abs/2202.04200</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Computer-Vision/">Computer Vision</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/VAE/">VAE</a>
+                    
+                      <a class="hover-with-bg" href="/tags/VQVAE/">VQVAE</a>
+                    
+                      <a class="hover-with-bg" href="/tags/VQGAN/">VQGAN</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MaskGIT/">MaskGIT</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/09/2-%E4%BB%8EVAE%E5%88%B0MaskGIT/">
+                        <span class="hidden-mobile">从VAE到MaskGIT(一)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"66d9351bc44d3e35c662","clientSecret":"91eaf9f3eff9eb4d326e8093a434b488d8e160b6","repo":"EllenWong.github.io","owner":"EllenWong","admin":["EllenWong"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '331f573944c0840875006a8c15305b33'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
