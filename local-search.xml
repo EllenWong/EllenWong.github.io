@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Weekly-220403</title>
+    <link href="/2022/04/03/1-Weekly-220403/"/>
+    <url>/2022/04/03/1-Weekly-220403/</url>
+    
+    <content type="html"><![CDATA[<h3 id="本周学习汇报"><a href="#本周学习汇报" class="headerlink" title="本周学习汇报"></a>本周学习汇报</h3><span id="more"></span><blockquote><div>            <input type="checkbox" disabled checked="checked">InstaFormer: Instance-Aware Image-to-Image Translation with Transformer[^1]          </div><div>            <input type="checkbox" disabled checked="checked">CLIP-GEN: Language-Free Training of a Text-to-Image Generator with CLIP[^2]          </div></blockquote><h2 id="1-InstraFormer"><a href="#1-InstraFormer" class="headerlink" title="1. InstraFormer"></a>1. InstraFormer</h2><p><img src="/images/1-weeklynote/220403/1.png" alt=""></p><ul><li><strong>动机：</strong> 在I2IT领域，很多任务仅仅是在做图像层面的转化，而忽略了具体的一些实例，因此就出现了对instance-aware I2I的研究，也就是对图片中的某一个具体的物体进行风格转换，此时就需要考虑图像层面和实例层面的一致性，即高效地整合全局与局部的信息。论文提出了一个新的单向网络，引入ViT，以达到高分辨率的图像与图像之间风格的转换。</li><li><strong>应用：</strong> 风格迁移、超分辨率、图像修复、图像着色等等。</li><li><strong>框架：</strong> 单向的端到端的网络，因此可以不使用循环一致损失。</li><li><strong>训练方法：</strong> 包括了对抗损失(判断最终生成的图像是否足够像目标域中的图像)、Global Content Loss（判断x到y的内容损失）、Instance-level Content Loss（对实例中的内容损失进行考量）Image Reconstruction Loss.（期待生成器可以很好的重构出图像）、Style Reconstruction Loss（更好地对解构的信息进行表达）。</li><li><strong>效果对比</strong></li></ul><p><img src="/images/1-weeklynote/220403/2.png" alt=""></p><h2 id="2-CLIP-GEN"><a href="#2-CLIP-GEN" class="headerlink" title="2. CLIP-GEN"></a>2. CLIP-GEN</h2><blockquote><h5 id="动机："><a href="#动机：" class="headerlink" title="动机："></a>动机：</h5><p>训练实现文本图像生成过程中需要大量的<strong>文本-图像配对数据</strong>，但往往这类数据的获取十分昂贵。本文考虑使用<strong>CLIP的Encoder的部分</strong>，提取一个图像的embedding，使其在一个联合图像和文本的embedding space中，第二部则采用<strong>VQGAN</strong>中的codebook将图像转换成一连串的离散的token序列，最后，训练一个<strong>自回归的Transformer</strong>，来匹配图像的token序列。</p><h5 id="框架："><a href="#框架：" class="headerlink" title="框架："></a>框架：</h5></blockquote><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p8" alt="3acfa39ecc7dd6a7c5ffe5d4456025ca.png">@w=500</p><ul><li>包含：CLIP、VQGAN、Condition Transformer等。</li><li>训练方法：分为两个阶段，其中第一个阶段是对VQGAN的codebook的学习，第二个阶段是对Transformer和CLIP的学习。 </li></ul><blockquote><h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul><li>Text-to-Image</li></ul><h5 id="效果对比"><a href="#效果对比" class="headerlink" title="效果对比"></a>效果对比</h5></blockquote><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p9" alt="71b1abf528e86398ef93323955125541.png">@w=500</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>I2I</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>从VAE到MaskGIT(二)</title>
     <link href="/2022/03/19/2-%E4%BB%8EVAE%E5%88%B0MaskGIT-2/"/>
     <url>/2022/03/19/2-%E4%BB%8EVAE%E5%88%B0MaskGIT-2/</url>
