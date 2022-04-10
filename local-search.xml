@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>Weekly-220410</title>
+    <link href="/2022/04/10/1-Weekly-220410/"/>
+    <url>/2022/04/10/1-Weekly-220410/</url>
+    
+    <content type="html"><![CDATA[<h3 id="本周学习汇报"><a href="#本周学习汇报" class="headerlink" title="本周学习汇报"></a>本周学习汇报</h3><span id="more"></span><blockquote><div>            <input type="checkbox" disabled checked="checked">CoordGAN: Self-Supervised Dense Correspondences Emerge from GANs[^1]          </div></blockquote><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p23" alt="31990bca58b7c158b34e8c6c68935227.png"></p><blockquote><h4 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h4><p>对一个Image而言，可分为Texture部分和Structure部分。而生成图像则期待学习一个连续平滑的变量空间，去表达不同图像之间像素层面的相关性，从而更好的对Texture和Structure部分进行解构（latent disentanglement），从而生成更多的有意义的图像。文章旨在学习一个显式的correspondence map，设计了一个新的坐标空间，以学习图像之间的密度关联。</p><h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p22" alt="b35dd37ddbcca343e15a9f0fbe38d78c.png"></p><ul><li>分为四个部分：纹理映射网络、结构映射网络、坐标变换网络（对密度图的分析）、生成器模块</li></ul><h4 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h4><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p24" alt="9aca3e3c1e98929983810a471e119982.png"><br><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p25" alt="e5f7b01f30bc1b52c485791c91895d4b.png"></p><h4 id="总结展望"><a href="#总结展望" class="headerlink" title="总结展望"></a>总结展望</h4></blockquote><ul><li>总结：设计了密度相关图，对GAN的latent space可以更好地进行解构。</li><li>展望：可以向3D方向进行扩展。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>I2I</tag>
+      
+      <tag>T2I</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Weekly-220403</title>
     <link href="/2022/04/03/1-Weekly-220403/"/>
     <url>/2022/04/03/1-Weekly-220403/</url>
@@ -116,11 +137,11 @@
     
     <tags>
       
+      <tag>Final review</tag>
+      
       <tag>presentation</tag>
       
       <tag>I2I</tag>
-      
-      <tag>Final review</tag>
       
     </tags>
     
