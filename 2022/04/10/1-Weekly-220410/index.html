@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      217 字
+      1.9k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      24
        分钟
     </span>
   
@@ -257,23 +257,140 @@
               <h3 id="本周学习汇报"><a href="#本周学习汇报" class="headerlink" title="本周学习汇报"></a>本周学习汇报</h3><span id="more"></span>
 <blockquote>
 <div>
-            <input type="checkbox" disabled checked="checked">CoordGAN: Self-Supervised Dense Correspondences Emerge from GANs[^1]
+            <input type="checkbox" disabled checked="checked">CoordGAN: Self-Supervised Dense Correspondences Emerge from GANs<sup id=fnref:1 class=footnote-ref><a href=#fn:1 rel=footnote><span class=hint--top hint--rounded aria-label=https://arxiv.org/abs/2203.16521
+>[1]</span></a></sup>
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">L-Verse: Bidirectional Generation Between Image and Text<sup id=fnref:2 class=footnote-ref><a href=#fn:2 rel=footnote><span class=hint--top hint--rounded aria-label=https://arxiv.org/abs/2111.11133
+>[2]</span></a></sup>
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">Probabilistic Warp Consistency for Weakly-Supervised Semantic Correspondences<sup id=fnref:3 class=footnote-ref><a href=#fn:3 rel=footnote><span class=hint--top hint--rounded aria-label=https://deeplearn.org/arxiv/271386/probabilistic-warp-consistency-for-weakly-supervised-semantic-correspondences
+>[3]</span></a></sup>
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">Subspace Adversarial Training<sup id=fnref:4 class=footnote-ref><a href=#fn:4 rel=footnote><span class=hint--top hint--rounded aria-label=https://arxiv.org/abs/2111.12229
+>[4]</span></a></sup>
           </div>
 </blockquote>
-<h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p23" srcset="/img/loading.gif" lazyload alt="31990bca58b7c158b34e8c6c68935227.png"></p>
-<blockquote>
-<h4 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h4><p>对一个Image而言，可分为Texture部分和Structure部分。而生成图像则期待学习一个连续平滑的变量空间，去表达不同图像之间像素层面的相关性，从而更好的对Texture和Structure部分进行解构（latent disentanglement），从而生成更多的有意义的图像。文章旨在学习一个显式的correspondence map，设计了一个新的坐标空间，以学习图像之间的密度关联。</p>
-<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p22" srcset="/img/loading.gif" lazyload alt="b35dd37ddbcca343e15a9f0fbe38d78c.png"></p>
+<h2 id="1-CoordGAN"><a href="#1-CoordGAN" class="headerlink" title="1. CoordGAN"></a>1. CoordGAN</h2><p><img src="/images/1-weeklynote/220410/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h3><p>对一个Image而言，可分为Texture部分和Structure部分。而生成图像则期待学习一个连续平滑的变量空间，去表达不同图像之间像素层面的相关性，从而更好的对Texture和Structure部分进行解构（latent disentanglement），从而生成更多的有意义的图像。文章旨在学习一个显式的correspondence map，设计了一个新的坐标空间，以学习图像之间的密度关联。</p>
+<h3 id="1-2-框架"><a href="#1-2-框架" class="headerlink" title="1.2 框架"></a>1.2 框架</h3><p><img src="/images/1-weeklynote/220410/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>分为四个部分：纹理映射网络、结构映射网络、坐标变换网络（对密度图的分析）、生成器模块</li>
 </ul>
-<h4 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h4><p><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p24" srcset="/img/loading.gif" lazyload alt="9aca3e3c1e98929983810a471e119982.png"><br><img src="evernotecid://7247B705-7CCC-4A1B-83D8-51E2789B2757/appyinxiangcom/26792748/ENResource/p25" srcset="/img/loading.gif" lazyload alt="e5f7b01f30bc1b52c485791c91895d4b.png"></p>
-<h4 id="总结展望"><a href="#总结展望" class="headerlink" title="总结展望"></a>总结展望</h4></blockquote>
-<ul>
+<h3 id="1-3-实验结果"><a href="#1-3-实验结果" class="headerlink" title="1.3 实验结果"></a>1.3 实验结果</h3><p><img src="/images/1-weeklynote/220410/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/images/1-weeklynote/220410/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-4-总结展望"><a href="#1-4-总结展望" class="headerlink" title="1.4 总结展望"></a>1.4 总结展望</h3><ul>
 <li>总结：设计了密度相关图，对GAN的latent space可以更好地进行解构。</li>
 <li>展望：可以向3D方向进行扩展。</li>
 </ul>
-
+<h2 id="2-L-Verse"><a href="#2-L-Verse" class="headerlink" title="2. L-Verse"></a>2. L-Verse</h2><blockquote>
+<p>题目：L-Verse（CVPR-oral）<br>L-Verse: Bidirectional Generation Between Image and Text</p>
+</blockquote>
+<p><img src="/images/1-weeklynote/220410/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>第一行：由图像生成文本效果</li>
+<li>第二行：由文本生成图像效果</li>
+</ul>
+<h3 id="2-1-动机"><a href="#2-1-动机" class="headerlink" title="2.1 动机"></a>2.1 动机</h3><p>在高分辨率图像生成中，Transformer有着强大的性能。在文本与图像的转换方面，VQ-VAE则可以通过维护一个codebook来高效的提取图像中的信息，以转变为序列化的特征向量。本文提出了L-Verse，包括了一个<strong>特征增强变分自编码器（AugVAE）</strong>，一个<strong>双向的自回归Transformer</strong>，可以实现<code>Image-Text</code>以及<code>Text-Image</code>的转变，而不需要微调或者是额外的目标检测框架。</p>
+<blockquote>
+<p>贡献</p>
+</blockquote>
+<ul>
+<li><strong>AugVAE：</strong> 表现了SOTA的图像重构性能。</li>
+<li><strong>BiART：</strong> 有两个不同的embedding vector，可以分别以reference和target为条件进行生成，也就是可以根据图像生成文字，也可以根据文字生成图像。</li>
+<li><strong>L-Verse:</strong>  包含以上两个模块，不需要任何额外的目标检测框架（比如Faster-RCNN，用于区域特征的提取）就可以进行由图像到文字的生成。</li>
+</ul>
+<h3 id="2-2-框架"><a href="#2-2-框架" class="headerlink" title="2.2 框架"></a>2.2 框架</h3><p><img src="/images/1-weeklynote/220410/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>AugVAE：</strong> 图中蓝色部分，具有一个层级结构，可以有效提取图像中的特征到image token中。</li>
+<li><strong>REF：</strong> 给定样式，即根据图像样式生成文本。</li>
+<li><strong>GEN：</strong> 给定target，即根据文本生成图像。</li>
+</ul>
+<h3 id="2-3-实验"><a href="#2-3-实验" class="headerlink" title="2.3 实验"></a>2.3 实验</h3><ul>
+<li><strong>定量分析：</strong> 重构FID指标达到了SOTA的效果（AugVAE）</li>
+</ul>
+<p><img src="/images/1-weeklynote/220410/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>定性分析：</strong> I2T与T2I的效果</li>
+</ul>
+<p><img src="/images/1-weeklynote/220410/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-4-总结与展望"><a href="#2-4-总结与展望" class="headerlink" title="2.4 总结与展望"></a>2.4 总结与展望</h3><ul>
+<li>本文的主要任务是做图像与文本之间的双向生成，提出了两个组件，分别是AugVAE与BiART，可以有效提取图像中的信息，并达到一个双向生成的效果。</li>
+<li>本文受VQ-GAN的启发，以利用Transformer生成高分辨率图像，受CLIP的影响，更好地对图像进行采样。</li>
+</ul>
+<h2 id="3-Probabilistic-Warp-Consistency"><a href="#3-Probabilistic-Warp-Consistency" class="headerlink" title="3. Probabilistic Warp Consistency"></a>3. Probabilistic Warp Consistency</h2><h3 id="3-1-引言"><a href="#3-1-引言" class="headerlink" title="3.1 引言"></a>3.1 引言</h3><ul>
+<li><strong>方法：</strong> 本文提出了概率扭曲一致性，一个为语义匹配任务设计的弱监督目标函数。本文的目标是<strong>更直接地监督由网络预测得到的密度匹配分数，编码成为一个条件概率分布。</strong> 方法是，首先构造一个图像三元组，应用一个已知扭曲在其中一张图像I上，同时与另一个图像J构成了一个图像三元组，I与J属于同一个类别中的不同实例，然后使用从生成的图像三元组产生的约束导出概率学习目标。通过一个可学习的特殊状态扩展概率输出空间，本文进一步考虑了遮挡问题以及背景噪声问题。为设计合理的监督，文章设计了一个图像对之间的目标函数，去描述不同的图像类别。</li>
+<li><strong>实验方面：</strong>，本文将这一方法应用在了四个最近的语义匹配结构中，实验表明，本文的方法可达到一个SOTA的效果，同时，本文的方法与关键点注释相结合时，也会带来强监督效果的提升。</li>
+<li><strong>研究领域：</strong> semantic matching，寻找同一个类别中不同实例的像素级别的相关性，可应用在<strong>语义分割</strong>与<strong>图像编辑</strong>的领域。</li>
+<li><strong>解决问题：</strong> 强监督中需要大量人工标注的数据，弱监督（只有图像级别的标签，弱监督的一种）成本较低，但往往效果不佳。</li>
+</ul>
+<p><img src="/images/1-weeklynote/220410/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-2-相关工作"><a href="#3-2-相关工作" class="headerlink" title="3.2 相关工作"></a>3.2 相关工作</h3><ul>
+<li><strong>语义匹配结构：</strong> 主要分为三步，1）feature extraction｜特征提取，2）cost volume construction｜存储两图像之间各像素的匹配程度，3） displacement estimation｜位移估计。</li>
+<li><strong>无监督与弱监督语义匹配问题：</strong> use proxy losses on the cost volume constructed between real image pairs, with image labels as the only supervision.</li>
+<li><strong>视频中的无监督学习：</strong> 提出自监督方法提取特征。</li>
+</ul>
+<h3 id="3-3-方法"><a href="#3-3-方法" class="headerlink" title="3.3 方法"></a>3.3 方法</h3><blockquote>
+<p>概率公式</p>
+</blockquote>
+<script type="math/tex; mode=display">P_{I \leftarrow J}(i \mid j)=\frac{\exp \left(C_{I \leftarrow J}(i, j)\right)}{\sum_{k} \exp \left(C_{I \leftarrow J}(k, j)\right)}</script><blockquote>
+<p>概率扭曲一致性约束</p>
+</blockquote>
+<p><img src="/images/1-weeklynote/220410/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>不匹配区域的建模</p>
+</blockquote>
+<script type="math/tex; mode=display">L_{\text {vis-PW-bi }}=\sum_{i \prime} \widehat{V}\left(i^{\prime}\right) \mathcal{H}\left(\widehat{P}_{I \leftarrow J \leftarrow I^{\prime}}\left(\cdot \mid i^{\prime}\right), P_{W}\left(\cdot \mid i^{\prime}\right)\right)</script><script type="math/tex; mode=display">L_{\mathrm{PNeg}}=\sum_{i} \mathcal{B}\left(\widehat{P}_{A \leftarrow I}(\emptyset \mid i), p_{\mathrm{neg}}\right)</script><blockquote>
+<p>训练目标函数</p>
+</blockquote>
+<script type="math/tex; mode=display">L_{\text {weak }}=L_{\text {vis-PW-bi }}+\lambda_{\text {P-warp-sup }} L_{\text {P-warp-sup }}+\lambda_{\mathrm{PNeg}} L_{\mathrm{PNeg}}</script><script type="math/tex; mode=display">L_{\text {strong }}=L_{\text {vis-PW-bi }}+\lambda_{\text {P-warp-sup }} L_{\text {P-warp-sup }}+\lambda_{\mathrm{kp}} L_{\mathrm{kp}}</script><h3 id="3-4-实验效果"><a href="#3-4-实验效果" class="headerlink" title="3.4 实验效果"></a>3.4 实验效果</h3><ul>
+<li><strong>定量分析：</strong> 消融实验</li>
+</ul>
+<p><img src="/images/1-weeklynote/220410/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>定性分析：</strong> 直接预测一个Dirac-like分布</li>
+</ul>
+<p><img src="/images/1-weeklynote/220410/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-5-总结与展望"><a href="#3-5-总结与展望" class="headerlink" title="3.5 总结与展望"></a>3.5 总结与展望</h3><ul>
+<li><strong>概率扭曲一致性</strong> ：适用于弱监督领域的目标函数。</li>
+<li>根据基于真实图像对生成的三元组图像，引入多个概率损失。</li>
+<li>在多个benchmark中达到SOTA效果。</li>
+</ul>
+<h2 id="4-Subspace-Adversarial-Training"><a href="#4-Subspace-Adversarial-Training" class="headerlink" title="4. Subspace Adversarial Training"></a>4. Subspace Adversarial Training</h2><h3 id="4-1-引言"><a href="#4-1-引言" class="headerlink" title="4.1 引言"></a>4.1 引言</h3><p>要解决<code>catastrophic overfitting</code> 问题。</p>
+<p><img src="/images/1-weeklynote/220410/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>对抗训练：</strong> Adversarial training (AT), which aims to minimize the model’s risk under the worst-case perturbations, is currently the most effective approach for improving the robustness of deep neural networks.</li>
+<li><strong>单步对抗训练：</strong> Since the adversarial examples above are generated by onestep gradient propagation, the corresponding AT is called single-step AT.</li>
+<li><strong>提出方法：</strong> Based on this discovery, we propose a new AT method called Subspace Adversarial Training (Sub-AT),<br>which identifies such an effective subspace and conducts AT in it.</li>
+</ul>
+<blockquote>
+<p>贡献</p>
+<ul>
+<li>We approach the catastrophic overfitting in single-step AT from a novel view of optimization and firstly reveal the close link between <strong>the fast-growing gradient of each sample and overfitting</strong>, which can also be applied to explain the robust overfitting in multi-step AT.</li>
+<li>We propose an efficient AT method, Sub-AT, <strong>which constrains AT in a carefully extracted subspace, to control the growth of gradient.</strong> It uniformly resolves both kinds of overfitting, significantly improves the robustness, and successfully overcomes the sensitivity to learning rates. It is also very easy to combine with other AT methods to bring consistent improvements.</li>
+<li>Our Sub-AT achieves <strong>state-of-the-art adversarial robustness on single-step AT</strong> and can successfully train with larger steps and larger radius, which brings further improvements. Notably, our pure single-step AT achieves over 51% robust accuracy against PGD-50 attack of ϵ = 8/255 on CIFAR-10, competitive to the multi-step PGD-10 AT with great time benefits.</li>
+</ul>
+</blockquote>
+<h3 id="4-2-方法"><a href="#4-2-方法" class="headerlink" title="4.2 方法"></a>4.2 方法</h3><p><img src="/images/1-weeklynote/220410/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="4-3-实验效果"><a href="#4-3-实验效果" class="headerlink" title="4.3 实验效果"></a>4.3 实验效果</h3><ul>
+<li><strong>定量分析：</strong></li>
+</ul>
+<p><img src="/images/1-weeklynote/220410/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="4-4-总结与展望"><a href="#4-4-总结与展望" class="headerlink" title="4.4 总结与展望"></a>4.4 总结与展望</h3><ul>
+<li>Reveal the close link between the fast-growing gradient of each sample and overfitting, which can also explain the robust overfitting in multi-step AT.</li>
+<li>Constrain AT in a carefully extracted subspace.</li>
+</ul>
+<h2 id="5-下一步计划"><a href="#5-下一步计划" class="headerlink" title="5. 下一步计划"></a>5. 下一步计划</h2><ul>
+<li>阅读特征匹配的相关论文及代码。</li>
+<li>了解密度图相关的知识。</li>
+</ul>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2203.16521">https://arxiv.org/abs/2203.16521</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2111.11133">https://arxiv.org/abs/2111.11133</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://deeplearn.org/arxiv/271386/probabilistic-warp-consistency-for-weakly-supervised-semantic-correspondences">https://deeplearn.org/arxiv/271386/probabilistic-warp-consistency-for-weakly-supervised-semantic-correspondences</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2111.12229">https://arxiv.org/abs/2111.12229</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </div>
             <hr>
             <div>
@@ -283,9 +400,13 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/I2I/">I2I</a>
+                      <a class="hover-with-bg" href="/tags/GAN/">GAN</a>
                     
                       <a class="hover-with-bg" href="/tags/T2I/">T2I</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Semantic-matching/">Semantic matching</a>
+                    
+                      <a class="hover-with-bg" href="/tags/I2T/">I2T</a>
                     
                   </div>
                 
