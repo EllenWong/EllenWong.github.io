@@ -12,6 +12,14 @@
     
     
     
+    <tags>
+      
+      <tag>GAN</tag>
+      
+      <tag>curriculum Learning</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -81,11 +89,11 @@
       
       <tag>GAN</tag>
       
+      <tag>T2I</tag>
+      
       <tag>Semantic matching</tag>
       
       <tag>I2T</tag>
-      
-      <tag>T2I</tag>
       
     </tags>
     
