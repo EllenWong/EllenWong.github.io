@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>Weekly-220529</title>
+    <link href="/2022/05/29/1-Weekly-220529/"/>
+    <url>/2022/05/29/1-Weekly-220529/</url>
+    
+    <content type="html"><![CDATA[<h3 id="本周学习汇报"><a href="#本周学习汇报" class="headerlink" title="本周学习汇报"></a>本周学习汇报</h3><span id="more"></span><blockquote><div>            <input type="checkbox" disabled checked="checked">自然辩证法的小论文作业          </div><div>            <input type="checkbox" disabled checked="checked">A Survey on Curriculum Learning          </div><div>            <input type="checkbox" disabled checked="checked">GraphGAN: Graph Representation Learning with Generative Adversarial Nets(AAAI)          </div></blockquote><h2 id="1-自然辩证法作业"><a href="#1-自然辩证法作业" class="headerlink" title="1. 自然辩证法作业"></a>1. 自然辩证法作业</h2><h3 id="题目：计算机视觉领域的创新思维方式剖析-——从科学技术方法论的角度谈创新思维能力的提升"><a href="#题目：计算机视觉领域的创新思维方式剖析-——从科学技术方法论的角度谈创新思维能力的提升" class="headerlink" title="题目：计算机视觉领域的创新思维方式剖析 ——从科学技术方法论的角度谈创新思维能力的提升"></a>题目：计算机视觉领域的创新思维方式剖析 ——从科学技术方法论的角度谈创新思维能力的提升</h3><p><img src="/images/1-weeklynote/220529/1-1.png" alt=""></p><ul><li>注：主要想借此回顾一下之前看过的内容，顺便思考一下如何创新的问题（科学技术方法论的角度）。无奈由于个人水平以及字数限制，并且对科学技术方法论了解不透彻，所以先就这样吧。不过自然辩证法这门学科还挺不错的哈哈哈。</li></ul><h2 id="2-课程学习综述阅读"><a href="#2-课程学习综述阅读" class="headerlink" title="2. 课程学习综述阅读"></a>2. 课程学习综述阅读</h2><p><img src="/images/1-weeklynote/220529/2-1.png" alt=""></p><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><ul><li>课程学习(curriculum Learning)是机器学习的一种训练策略，让机器学习由简单的数据到复杂的数据逐步进行学习（类似于学生学习的一些课程，由易到难），借用此方式提升模型的泛化性能和收敛速度。主要包含<code>Difficulty Measurer + Training Scheduler</code>两部分。<br><img src="/images/1-weeklynote/220529/2-2.png" alt=""></li></ul><h3 id="2-2-框架结构"><a href="#2-2-框架结构" class="headerlink" title="2.2 框架结构"></a>2.2 框架结构</h3><p><img src="/images/1-weeklynote/220529/2-3.png" alt=""><br><img src="/images/1-weeklynote/220529/2-4.png" alt=""><br><img src="/images/1-weeklynote/220529/2-5.png" alt=""></p><h3 id="2-3-应用与发展"><a href="#2-3-应用与发展" class="headerlink" title="2.3 应用与发展"></a>2.3 应用与发展</h3><ul><li>应用：主要有导向和去噪两种应用。<ul><li>导向是指加快训练收敛速度，主要场景是当目标任务复杂且有不同的分布时，比如多任务学习、GAN的训练、NAS、domain adaption、样本不平衡的分类等等。</li><li>去噪是指提高模型泛化能力和鲁棒性，主要场景是当任务由很多噪声时，样本质量不一，存在异构数据等情况，比如弱监督或者无监督学习。</li></ul></li><li>发展：<ul><li>更好的评估标准</li><li>更先进的理论：<code>“easier first</code>还是<code>harder first</code></li><li>更多的CL算法与更多样的应用</li></ul></li></ul><h2 id="3-图表征学习与生成对抗网络"><a href="#3-图表征学习与生成对抗网络" class="headerlink" title="3. 图表征学习与生成对抗网络"></a>3. 图表征学习与生成对抗网络</h2><p><img src="/images/1-weeklynote/220529/3-1.png" alt=""><br><a href="https://github.dev/hwwang55/GraphGAN">Github</a></p><h3 id="3-1-Introduction"><a href="#3-1-Introduction" class="headerlink" title="3.1. Introduction"></a>3.1. Introduction</h3><ul><li><strong>Graph representation learning：</strong> Embed each vertex in a graph into a low-dimensional vector space.</li><li><strong>Categories:</strong> generative models and discriminative models.</li><li><strong>proposed:</strong> Graph softmax.</li></ul><h3 id="3-2-Related-Work"><a href="#3-2-Related-Work" class="headerlink" title="3.2. Related Work"></a>3.2. Related Work</h3><ul><li>GAN</li><li>Graph Representation Learning</li></ul><h3 id="3-3-Methodology"><a href="#3-3-Methodology" class="headerlink" title="3.3. Methodology"></a>3.3. Methodology</h3><h4 id="3-3-1-GraphGAN-Framework"><a href="#3-3-1-GraphGAN-Framework" class="headerlink" title="3.3.1 GraphGAN Framework"></a>3.3.1 GraphGAN Framework</h4><p><img src="/images/1-weeklynote/220529/3-2.png" alt=""></p><ul><li><strong>G：</strong> Generates (or selects, if more precise) the most likely vertices to be connected with vc from vertex set V.</li><li><strong>D：</strong> Discriminate the connectivity for the vertex pair (v, vc)</li></ul><h4 id="3-3-2-Graph-Softmax-for-Generator"><a href="#3-3-2-Graph-Softmax-for-Generator" class="headerlink" title="3.3.2 Graph Softmax for Generator"></a>3.3.2 Graph Softmax for Generator</h4><p><img src="/images/1-weeklynote/220529/3-3.png" alt=""></p><h4 id="3-3-3-The-Code-Tree"><a href="#3-3-3-The-Code-Tree" class="headerlink" title="3.3.3 The Code Tree"></a>3.3.3 The Code Tree</h4><ul><li><a href="https://github.dev/hwwang55/GraphGAN">https://github.dev/hwwang55/GraphGAN</a></li><li><strong>data</strong>  <ul><li>CA-GrQc</li></ul></li><li><strong>pre_train</strong><ul><li>CA…pre_train . emb</li></ul></li><li><strong>src</strong><ul><li>evaluation<ul><li>link_prediction.py : used to evaluate the application of link prediction.</li></ul></li><li>GraphGAN<ul><li>graph_gan.py:<br><img src="/images/1-weeklynote/220529/3-4.png" alt=""></li><li>generator： the G model</li><li>discriminator： the D model</li><li>config： some settings </li></ul></li></ul></li></ul><h3 id="3-4-Experiments"><a href="#3-4-Experiments" class="headerlink" title="3.4. Experiments"></a>3.4. Experiments</h3><ul><li><strong>Quantitative Analysis：</strong><br><img src="/images/1-weeklynote/220529/3-5.png" alt=""></li></ul><h3 id="3-5-Conclusion-and-Future-Work"><a href="#3-5-Conclusion-and-Future-Work" class="headerlink" title="3.5. Conclusion and Future Work"></a>3.5. Conclusion and Future Work</h3><ul><li>Unifies two schools of graph representation learning methodologies</li><li>Solves the inherent limitations of the traditional softmax</li></ul><h2 id="4-下一步计划"><a href="#4-下一步计划" class="headerlink" title="4. 下一步计划"></a>4. 下一步计划</h2><ul><li>期末考试</li><li>了解原型学习的相关内容</li><li>重新阅读图像超分辨率的内容</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Weekly-220522</title>
     <link href="/2022/05/22/1-Weekly-220522/"/>
     <url>/2022/05/22/1-Weekly-220522/</url>
@@ -68,11 +81,11 @@
       
       <tag>GAN</tag>
       
-      <tag>T2I</tag>
-      
       <tag>Semantic matching</tag>
       
       <tag>I2T</tag>
+      
+      <tag>T2I</tag>
       
     </tags>
     
