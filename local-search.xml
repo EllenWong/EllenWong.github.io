@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Weekly-221015</title>
+    <link href="/2022/10/15/1-Weekly-221015/"/>
+    <url>/2022/10/15/1-Weekly-221015/</url>
+    
+    <content type="html"><![CDATA[<h3 id="周记：论文阅读（不含工作日）"><a href="#周记：论文阅读（不含工作日）" class="headerlink" title="周记：论文阅读（不含工作日）"></a>周记：论文阅读（不含工作日）</h3><span id="more"></span><blockquote><div>            <input type="checkbox" disabled checked="checked">Foundation Transformers          </div></blockquote><h2 id="Foundation-Transformers"><a href="#Foundation-Transformers" class="headerlink" title="Foundation Transformers"></a>Foundation Transformers</h2><p><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/2210.06423">[1]</span></a></sup>随着Transformer的发展与完善，人工智能领域的许多任务都有了相关的应用（如Vision、Language与Speech等）。由于任务的不同，我们通常会采用不同的网络架构。</p><h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h3><ul><li><strong>目的：</strong> 提出<code>MAGNETO</code>，建立Transformer的通用模型，介绍其不同的变种（针对不同任务），保证训练稳定性。</li><li><strong>基础的Transformer模型：</strong> <sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/1706.03762">[2]</span></a></sup>如下图所示，以注意力机制连接编码器（左）与解码器（右），是一个实现seq2seq的模型，最初在机器翻译的任务上体现了其独特的优势（对长距离信息提取十分有效）。<br><img src="/images/1-weeklynote/221015/1.png" alt="Transformer基本架构"></li><li><code>MAGNETO</code><strong>的改进</strong>：网络结构与初始化方法。<ul><li><strong>网络结构：</strong> 与<code>Pre-LN</code>相比，<code>Sub-LN</code>对每一个子层(multi-head self-attention、feed-forward network)的输入投影之前和输出投影之前引入了另一种层归一化机制。</li><li><strong>初始化方法：</strong> 采用<code>DeepNet</code><sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://arxiv.org/abs/2203.00555">[3]</span></a></sup>的初始化机制，这一做法极大提高了训练稳定性，可无副作用地使模型尺寸放大(也就是层数变多)。</li></ul></li></ul><p><img src="/images/1-weeklynote/221015/2.png" alt="论文主要贡献（我觉得最主要的一幅图)"></p><h3 id="2-网络结构：Sub-LayerNorm"><a href="#2-网络结构：Sub-LayerNorm" class="headerlink" title="2. 网络结构：Sub-LayerNorm"></a>2. 网络结构：Sub-LayerNorm</h3><p><img src="/images/1-weeklynote/221015/3.png" alt="网络结构对比(注意看红色部分，即本文的改进)"></p><ul><li><strong>在输入的qkv投影之前加入的LN层：</strong> 其中，W代表多头注意力机制的一些参数。<script type="math/tex; mode=display">\begin{aligned}Q, K, V &=W^{Q} \mathrm{LN}(x), W^{K} \mathrm{LN}(x), W^{V} \mathrm{LN}(x) \\\operatorname{MSA}(x) &=x+W^{O} \mathrm{LN}(\operatorname{Attention}(Q, K, V))\end{aligned}</script></li><li><strong>在前馈网络中加入的LN层：</strong> 其中，<script type="math/tex">\phi</script> 代表非线性激活层。<script type="math/tex; mode=display">\begin{aligned}\mathrm{FC}_{1}(x) &=W^{1} \mathrm{LN}(x) \\\mathrm{FC}_{2}(x) &=W^{2} \mathrm{LN}(x) \\\mathrm{FFN}(x) &=\mathrm{FC}_{2}\left(\phi\left(\mathrm{FC}_{1}(x)\right)\right)\end{aligned}</script></li></ul><h3 id="3-初始化方法：详细推导见DeepNet"><a href="#3-初始化方法：详细推导见DeepNet" class="headerlink" title="3. 初始化方法：详细推导见DeepNet"></a>3. 初始化方法：详细推导见DeepNet</h3><ul><li><strong>结论：</strong> MAGNETO的初始化方法相比于原始模型更具稳定性（可适用于更大的模型）。</li><li><p><strong>Pre-LN的预期模型更新：</strong> </p><ul><li><strong>前向传播过程：</strong> 其中 <script type="math/tex">x^{l-1}</script> 与 <script type="math/tex">x^{l}</script> 分别代表 <script type="math/tex">l-th</script> 子层 <script type="math/tex">G^{l}</script>（Self- Attention MSA）的输入和输出。<script type="math/tex; mode=display">\begin{array}{l}F(x ; \theta)=W^{v o c a b} x^{e} \\x^{e}=\operatorname{LN}\left(x+\sum_{l=1}^{L} G^{l}\left(x^{l-1}, \theta_{e l}\right)\right), \quad x^{l}=G^{l}\left(x^{l-1}, \theta_{e l}\right) \text { and } x^{0}=x\end{array}</script></li><li><strong>前向计算表示：</strong> 其中W代表模型参数，参数量越多，说明模型越大。<script type="math/tex; mode=display">x^{l}=x^{l-1}+W^{l, 2} \phi\left(W^{l, 1} \mathrm{LN}\left(x^{l-1}\right)\right)</script></li></ul></li><li><p><strong>MAGNETO的预期模型更新：</strong> </p><ul><li><strong>前向计算表示：</strong> 与上式对比。<script type="math/tex; mode=display">x^{l}=x^{l-1}+W^{l, 2} \mathrm{LN}\left(\phi\left(W^{l, 1} \mathrm{LN}\left(x^{l-1}\right)\right)\right)</script></li></ul></li><li><p><strong>方法对比：</strong></p><ul><li><strong>Pre-LN 参数更新</strong><br><img src="/images/1-weeklynote/221015/5.png" alt=""></li><li><strong>MAGNETO 参数更新</strong><br><img src="/images/1-weeklynote/221015/6.png" alt=""></li><li><strong>对权重的处理：</strong> 见论文主要贡献图中表格部分。</li></ul></li></ul><h3 id="4-实验部分：详见论文（贴一张视觉部分的）"><a href="#4-实验部分：详见论文（贴一张视觉部分的）" class="headerlink" title="4. 实验部分：详见论文（贴一张视觉部分的）"></a>4. 实验部分：详见论文（贴一张视觉部分的）</h3><p><img src="/images/1-weeklynote/221015/4.png" alt=""></p><h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h3><ul><li>本文主要目的是进一步提高Transformer的性能，其一是改变网络结构，增加LN层，其二是提高模型稳定性，对模型的参数进行一定的约束，得到一种更加通用的架构，并适用于尽可能多的模型规模。</li></ul><h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://arxiv.org/abs/2210.06423">https://arxiv.org/abs/2210.06423</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://arxiv.org/abs/1706.03762">https://arxiv.org/abs/1706.03762</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a href="https://arxiv.org/abs/2203.00555">https://arxiv.org/abs/2203.00555</a><a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Transformer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Weekly-220619</title>
     <link href="/2022/06/19/1-Weekly-220619/"/>
     <url>/2022/06/19/1-Weekly-220619/</url>
@@ -160,11 +179,11 @@
       
       <tag>GAN</tag>
       
+      <tag>T2I</tag>
+      
       <tag>Semantic matching</tag>
       
       <tag>I2T</tag>
-      
-      <tag>T2I</tag>
       
     </tags>
     
@@ -287,9 +306,9 @@
       
       <tag>presentation</tag>
       
-      <tag>Final review</tag>
-      
       <tag>I2I</tag>
+      
+      <tag>Final review</tag>
       
     </tags>
     
@@ -712,7 +731,7 @@
     <link href="/2021/09/26/4-Cats/"/>
     <url>/2021/09/26/4-Cats/</url>
     
-    <content type="html"><![CDATA[<h1 id="关于我遇到的一些猫"><a href="#关于我遇到的一些猫" class="headerlink" title="关于我遇到的一些猫"></a>关于我遇到的一些猫</h1><span id="more"></span><h1 id="Cat1"><a href="#Cat1" class="headerlink" title="Cat1"></a>Cat1</h1><p><img src="/images/4-else/cat/cat1.jpg" alt=""></p><ul><li>Name：胡胡｜胡女士</li><li>Home：宿舍楼下</li><li>Story：她可能是我上学期拍摄的最多的猫，有次我还拍到了她赏雪的照片，胡胡和大橘关系比较好。</li></ul><h1 id="Cat2"><a href="#Cat2" class="headerlink" title="Cat2"></a>Cat2</h1><p><img src="/images/4-else/cat/cat2.jpg" alt=""></p><ul><li>Name：小舞</li><li>Home：快递点旁的草坪</li><li>Story：我遇到的第一只猫，短尾，目前她处于半领养状态。</li></ul><h1 id="Cat3"><a href="#Cat3" class="headerlink" title="Cat3"></a>Cat3</h1><p><img src="/images/4-else/cat/cat3.jpg" alt=""></p><ul><li>Name：焦糖</li><li>Home：商学院门口（可能，因为没见到它第二面///现在见了好多次了）</li><li>Story： 她和砂糖关系比较好，超会撒娇，但是吃饭时就是个订书机。</li></ul><h1 id="Cat4"><a href="#Cat4" class="headerlink" title="Cat4"></a>Cat4</h1><p><img src="/images/4-else/cat/cat4.jpg" alt=""></p><ul><li>Name：？？？</li><li>Home：操场，旁边的麻袋</li></ul><h1 id="Cat5"><a href="#Cat5" class="headerlink" title="Cat5"></a>Cat5</h1><p><img src="/images/4-else/cat/cat5.jpg" alt=""></p><ul><li>Name：白糖</li><li>Home：图书馆前的红色建筑</li><li>Story： 我目前最喜欢的一只小猫咪，她能听懂自己的名字。</li></ul><h1 id="试试插入视频与音乐"><a href="#试试插入视频与音乐" class="headerlink" title="试试插入视频与音乐"></a>试试插入视频与音乐</h1><center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=501747707&auto=1&height=66"></iframe></center><center><iframe src="//player.bilibili.com/player.html?aid=763769001&bvid=BV1gr4y117d5&cid=430929972&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center>]]></content>
+    <content type="html"><![CDATA[<h1 id="关于我遇到的一些猫"><a href="#关于我遇到的一些猫" class="headerlink" title="关于我遇到的一些猫"></a>关于我遇到的一些猫</h1><span id="more"></span><h1 id="Cat1"><a href="#Cat1" class="headerlink" title="Cat1"></a>Cat1</h1><p><img src="/images/4-else/cat/cat1.jpg" alt=""></p><ul><li>Name：胡胡｜胡女士</li><li>Home：宿舍楼下</li><li>Story：她可能是我上学期拍摄的最多的猫，有次我还拍到了她赏雪的照片，胡胡和大橘关系比较好。</li></ul><h1 id="Cat2"><a href="#Cat2" class="headerlink" title="Cat2"></a>Cat2</h1><p><img src="/images/4-else/cat/cat2.jpg" alt=""></p><ul><li>Name：小舞</li><li>Home：快递点旁的草坪</li><li>Story：我遇到的第一只猫，短尾，目前她处于半领养状态。</li></ul><h1 id="Cat3"><a href="#Cat3" class="headerlink" title="Cat3"></a>Cat3</h1><p><img src="/images/4-else/cat/cat3.jpg" alt=""></p><ul><li>Name：焦糖</li><li>Home：商学院门口（可能，因为没见到它第二面///现在见了好多次了）</li><li>Story：她和砂糖关系比较好，超会撒娇，但是吃饭时就是个订书机。</li></ul><h1 id="Cat4"><a href="#Cat4" class="headerlink" title="Cat4"></a>Cat4</h1><p><img src="/images/4-else/cat/cat4.jpg" alt=""></p><ul><li>Name：小橘</li><li>Home：操场，旁边的麻袋</li><li>Story：我有次晚上跑步，每跑一圈都要看它在不在，后来有段时间晨练时也每天都能看到它。</li></ul><h1 id="Cat5"><a href="#Cat5" class="headerlink" title="Cat5"></a>Cat5</h1><p><img src="/images/4-else/cat/cat5.jpg" alt=""></p><ul><li>Name：白糖</li><li>Home：图书馆前的红色建筑</li><li>Story： 我目前最喜欢的一只小猫咪，她能听懂自己的名字。</li></ul><h1 id="试试插入视频与音乐"><a href="#试试插入视频与音乐" class="headerlink" title="试试插入视频与音乐"></a>试试插入视频与音乐</h1><center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=501747707&auto=1&height=66"></iframe></center><center><iframe src="//player.bilibili.com/player.html?aid=763769001&bvid=BV1gr4y117d5&cid=430929972&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center>]]></content>
     
     
     <categories>
